@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="Retro Cinema — Free classic movies. Enter your email to start watching Hollywood and Bollywood golden-era full movies right here in HD. Sholay, Mughal-e-Azam, Guide, Charade, Nosferatu and more. 100% free, no card, no payment." />
+<link rel="icon" href="data:," />
+<title>Retro Cinema — Free Classic Movies | Watch Hollywood & Bollywood in HD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="dns-prefetch" href="https://i.ytimg.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0f; --bg2:#121218; --panel:#17171f; --panel2:#1e1e28;
+    --text:#f5f3ee; --muted:#a7a3b5; --muted2:#6f6b80;
+    --red:#e50914; --red-dark:#b00610; --gold:#e8b33c; --gold-soft:#f5cf6a;
+    --line:rgba(255,255,255,.09);
+    --radius:10px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  button,[role="button"],select,input{font:inherit}
+  button,[role="button"],select,input:not([type="checkbox"]){min-height:2.25rem}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--red);color:#fff}
+
+  /* ---------- NAV ---------- */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:1.1rem;padding:.65rem clamp(.9rem,3.5vw,3rem);background:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,0));transition:background .3s}
+  .nav.scrolled{background:rgba(11,11,15,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+  .logo{font-family:"Bebas Neue",sans-serif;font-size:1.9rem;letter-spacing:.06em;line-height:1;color:#fff;text-decoration:none;white-space:nowrap}
+  .logo span{color:var(--red)}
+  .logo small{display:block;font-family:"Manrope",sans-serif;font-size:.56rem;letter-spacing:.32em;color:var(--gold-soft);font-weight:800;margin-top:.1rem}
+  .nav-links{display:flex;gap:1.15rem;margin-left:.6rem}
+  .nav-links a{color:#d8d5e0;text-decoration:none;font-size:.86rem;font-weight:600;padding:.45rem .1rem}
+  .nav-links a:hover{color:#fff}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:.6rem}
+  .searchbox{display:flex;align-items:center;gap:.45rem;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.28);padding:0 .65rem;border-radius:6px;min-height:2.4rem}
+  .searchbox svg{flex:none;opacity:.85}
+  .searchbox input{background:none;border:0;outline:0;color:#fff;width:9.5rem;font-size:.88rem}
+  .searchbox input::placeholder{color:#b9b5c4}
+  .mylist-btn{background:rgba(255,255,255,.1);border:1px solid var(--line);color:#fff;border-radius:6px;padding:.45rem .8rem;font-weight:700;font-size:.84rem;cursor:pointer;white-space:nowrap}
+  .mylist-btn:hover{background:rgba(255,255,255,.2)}
+  .mylist-btn b{color:var(--gold-soft)}
+  @media(max-width:760px){.nav-links{display:none}.searchbox{flex:1;min-width:0}.searchbox input{width:100%;min-width:0}.logo{font-size:1.55rem}.nav{gap:.6rem}}
+  @media(max-width:430px){.logo small{display:none}.mylist-btn{padding:.45rem .55rem;font-size:.78rem}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:92svh;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;overflow:hidden;background:#000}
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(.92);transition:opacity .6s}
+  .hero-shade{position:absolute;inset:0;background:linear-gradient(77deg,rgba(5,5,8,.94) 8%,rgba(5,5,8,.55) 45%,rgba(5,5,8,.05) 75%),linear-gradient(0deg,var(--bg) 2%,transparent 38%),linear-gradient(180deg,rgba(0,0,0,.45),transparent 22%)}
+  .hero-content{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:7.5rem clamp(.9rem,3.5vw,3rem) 2.4rem}
+  .hero-kicker{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft)}
+  .hero-kicker::before{content:"";width:26px;height:2px;background:var(--red)}
+  .hero-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(3.2rem,9vw,6.4rem);line-height:.94;letter-spacing:.015em;margin:.55rem 0 .4rem;max-width:11ch;text-wrap:balance}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:.55rem .9rem;align-items:center;font-size:.92rem;color:#e6e3da;font-weight:600}
+  .hero-meta .match{color:#46d369;font-weight:800}
+  .hero-meta .badge{border:1px solid rgba(255,255,255,.4);padding:.08rem .45rem;border-radius:4px;font-size:.75rem}
+  .hero-meta .src{color:var(--gold-soft)}
+  .hero-desc{max-width:56ch;color:#ddd9cf;font-size:1.02rem;line-height:1.6;margin:.85rem 0 1.35rem}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;border:0;border-radius:6px;padding:.72rem 1.5rem;font-weight:800;font-size:1rem;cursor:pointer;text-decoration:none;min-height:3rem}
+  .btn-play{background:#fff;color:#111}
+  .btn-play:hover{background:rgba(255,255,255,.82)}
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red-dark)}
+  .btn-ghost{background:rgba(109,109,110,.65);color:#fff}
+  .btn-ghost:hover{background:rgba(109,109,110,.45)}
+  .hero-dots{position:absolute;right:clamp(.9rem,3.5vw,3rem);bottom:5.2rem;z-index:3;display:flex;flex-direction:column;gap:.5rem}
+  .hero-dots button{width:2.3rem;height:.32rem;border-radius:99px;border:0;background:rgba(255,255,255,.32);cursor:pointer;padding:0;min-height:0}
+  .hero-dots button.on{background:var(--red)}
+  .hero-strip{position:relative;z-index:2;border-top:1px solid var(--line);background:rgba(10,10,14,.72);backdrop-filter:blur(8px)}
+  .hero-strip-in{max-width:1280px;margin:0 auto;padding:.8rem clamp(.9rem,3.5vw,3rem);display:flex;flex-wrap:wrap;gap:.4rem 2rem;font-size:.86rem;color:var(--muted)}
+  .hero-strip-in b{color:#fff;font-size:1rem}
+  @media(max-width:760px){.hero{min-height:86svh}.hero-dots{display:none}.hero-desc{font-size:.95rem}}
+
+  /* ---------- FILTER BAR ---------- */
+  .filterbar{position:sticky;top:3.9rem;z-index:50;background:rgba(11,11,15,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .filterbar-in{max-width:1280px;margin:0 auto;padding:.65rem clamp(.9rem,3.5vw,3rem);display:flex;flex-wrap:wrap;gap:.55rem;align-items:center}
+  .tabs{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:.22rem;gap:.2rem}
+  .tabs button{border:0;background:transparent;color:var(--muted);font-weight:800;font-size:.85rem;padding:.42rem 1rem;border-radius:99px;cursor:pointer;min-height:2.2rem}
+  .tabs button.on{background:var(--red);color:#fff}
+  .chip{border:1px solid var(--line);background:var(--panel);color:#cfccd9;border-radius:99px;padding:.42rem .85rem;font-size:.82rem;font-weight:700;cursor:pointer;min-height:2.2rem}
+  .chip:hover{border-color:rgba(255,255,255,.35);color:#fff}
+  .chip.on{background:#fff;color:#111;border-color:#fff}
+  .filterbar select{background:var(--panel);color:#fff;border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem;font-weight:700;font-size:.85rem;min-height:2.4rem}
+  .result-count{margin-left:auto;color:var(--muted);font-size:.84rem;font-weight:600}
+
+  /* ---------- ROWS ---------- */
+  main{max-width:1280px;margin:0 auto;padding:0 clamp(.9rem,3.5vw,3rem) 3rem}
+  .row{margin-top:2.1rem}
+  .row-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:.75rem}
+  .row-head h2{font-size:1.28rem;margin:0;font-weight:800;letter-spacing:-.01em}
+  .row-head p{margin:0;color:var(--muted);font-size:.85rem}
+  .row-nav{margin-left:auto;display:flex;gap:.4rem}
+  .row-nav button{width:2.3rem;height:2.3rem;min-height:2.3rem;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:#fff;cursor:pointer;font-size:1rem;line-height:1}
+  .row-nav button:hover{background:var(--panel2)}
+  .rail{display:flex;gap:.65rem;overflow-x:auto;padding:.2rem .1rem .8rem;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#3a3a48 transparent}
+  .rail::-webkit-scrollbar{height:6px}
+  .rail::-webkit-scrollbar-thumb{background:#3a3a48;border-radius:99px}
+
+  /* ---------- CARDS ---------- */
+  .card{flex:0 0 auto;width:196px;scroll-snap-align:start;background:none;border:0;padding:0;text-align:left;cursor:pointer;color:inherit;font-family:inherit}
+  .card.wide{width:264px}
+  .thumb{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--panel2);aspect-ratio:16/9}
+  .card.wide .thumb{aspect-ratio:16/9}
+  .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+  .card:hover .thumb img,.card:focus-visible .thumb img{transform:scale(1.06)}
+  .thumb .yr{position:absolute;top:.5rem;left:.5rem;background:rgba(0,0,0,.72);color:#fff;font-size:.72rem;font-weight:800;padding:.22rem .5rem;border-radius:5px;letter-spacing:.04em}
+  .thumb .ind{position:absolute;top:.5rem;right:.5rem;font-size:.64rem;font-weight:800;letter-spacing:.08em;padding:.24rem .5rem;border-radius:5px;text-transform:uppercase}
+  .ind.hw{background:var(--gold);color:#191203}
+  .ind.bw{background:var(--red);color:#fff}
+  .thumb .playdot{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.38);opacity:0;transition:opacity .25s}
+  .card:hover .playdot,.card:focus-visible .playdot{opacity:1}
+  .playdot i{width:3rem;height:3rem;border-radius:50%;background:var(--red);display:grid;place-items:center;font-style:normal;color:#fff;font-size:1.05rem;padding-left:.2rem;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+  .thumb .free{position:absolute;bottom:.5rem;left:.5rem;background:rgba(0,0,0,.75);color:#7ee2a0;font-size:.66rem;font-weight:800;letter-spacing:.06em;padding:.22rem .5rem;border-radius:5px}
+  .thumb .dlb{position:absolute;bottom:.5rem;right:.5rem;background:var(--gold);color:#191203;font-size:.66rem;font-weight:800;letter-spacing:.05em;padding:.22rem .5rem;border-radius:5px}
+  .dl-note{margin:.85rem 0 0;color:var(--muted);font-size:.86rem;line-height:1.55}
+  .dl-note b{color:#7ee2a0}
+  .card h3{font-size:.93rem;margin:.6rem 0 .15rem;line-height:1.3;font-weight:700}
+  .card .sub{color:var(--muted);font-size:.78rem;line-height:1.45}
+  .card .sub b{color:#46d369;font-weight:800}
+  @media(max-width:560px){.card{width:158px}.card.wide{width:218px}}
+
+  /* ---------- GRID ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:1.1rem .8rem;margin-top:1.2rem}
+  .grid .card{width:auto}
+  .empty{border:1px dashed rgba(255,255,255,.22);border-radius:12px;padding:2.2rem 1.4rem;text-align:center;color:var(--muted);margin-top:1.4rem}
+  .empty b{color:#fff;display:block;font-size:1.05rem;margin-bottom:.35rem}
+
+  /* ---------- CHANNELS / INFO ---------- */
+  #browse{padding-bottom:.6rem}
+  .band{position:relative;z-index:2;clear:both;margin-top:3rem;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:1.6rem clamp(1rem,3vw,2rem)}
+  .band h2{margin:0 0 .4rem;font-size:1.35rem}
+  .band>p{color:var(--muted);margin:0 0 1.2rem;max-width:68ch;line-height:1.6;font-size:.94rem}
+  .channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.8rem}
+  .chan{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1rem 1.05rem}
+  .chan h3{margin:0 0 .3rem;font-size:1rem;display:flex;align-items:center;gap:.5rem}
+  .chan h3::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--red);flex:none}
+  .chan p{margin:0;color:var(--muted);font-size:.85rem;line-height:1.55}
+  .chan a{display:inline-block;margin-top:.6rem;color:var(--gold-soft);font-weight:800;font-size:.84rem;text-decoration:none;padding:.35rem 0}
+  .chan a:hover{text-decoration:underline}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1rem 1.05rem}
+  .step b{display:block;font-family:"Bebas Neue",sans-serif;font-size:1.7rem;color:var(--red);letter-spacing:.05em}
+  .step p{margin:.25rem 0 0;color:var(--muted);font-size:.87rem;line-height:1.55}
+  footer{border-top:1px solid var(--line);margin-top:3rem}
+  .foot{max-width:1280px;margin:0 auto;padding:1.6rem clamp(.9rem,3.5vw,3rem) 2.4rem;color:var(--muted2);font-size:.82rem;line-height:1.7}
+  .foot b{color:#cfccd9}
+
+  /* ---------- LANDING / EMAIL GATE ---------- */
+  body.locked{overflow:hidden}
+  .landing{position:fixed;inset:0;z-index:200;background:#000;color:#fff;overflow-y:auto;overflow-x:hidden;transition:opacity .45s ease,visibility .45s}
+  .landing.gone{opacity:0;visibility:hidden;pointer-events:none}
+  .landing[hidden]{display:none}
+  .land-bg{position:absolute;top:0;left:0;right:0;height:100svh;min-height:560px;overflow:hidden}
+  .land-collage{position:absolute;inset:-12% -6%;display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;transform:rotate(-7deg) scale(1.12)}
+  .land-collage img{width:100%;height:100%;object-fit:cover;border-radius:6px;aspect-ratio:16/10}
+  .land-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.62),rgba(0,0,0,.78) 45%,rgba(0,0,0,.94)),radial-gradient(ellipse at center,transparent 0,rgba(0,0,0,.45) 90%)}
+  .land-nav{position:relative;z-index:3;display:flex;align-items:center;gap:1rem;padding:1.1rem clamp(.9rem,4vw,3.2rem);max-width:1280px;margin:0 auto}
+  .land-nav-r{margin-left:auto;display:flex;align-items:center;gap:.6rem}
+  .land-lang{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;padding:.45rem .7rem;font-weight:600;font-size:.86rem;min-height:2.3rem;display:inline-flex;align-items:center}
+  .land-signin{background:var(--red);border:0;color:#fff;border-radius:6px;padding:.5rem 1rem;font-weight:800;font-size:.9rem;cursor:pointer;min-height:2.3rem}
+  .land-signin:hover{background:var(--red-dark)}
+  .land-hero{position:relative;z-index:2;text-align:center;padding:clamp(2.2rem,8svh,5.5rem) clamp(1rem,4vw,2rem) 4.5rem;max-width:880px;margin:0 auto}
+  .land-hero h1{font-size:clamp(2.15rem,6.2vw,3.7rem);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .land-hero h1 em{font-style:normal;color:#fff}
+  .land-hero h1 .free{color:var(--red)}
+  .land-price{font-size:clamp(1.05rem,2.4vw,1.3rem);font-weight:700;margin:1.05rem 0 0}
+  .land-ready{font-size:1.02rem;color:#eee;margin:1.5rem 0 .8rem}
+  .land-form{display:flex;gap:.55rem;justify-content:center;align-items:stretch;max-width:600px;margin:0 auto}
+  .land-field{flex:1;min-width:0}
+  .land-field input{width:100%;height:3.55rem;background:rgba(18,18,22,.78);border:1px solid rgba(255,255,255,.42);border-radius:6px;color:#fff;padding:0 1rem;font-size:1rem;outline:none}
+  .land-field input::placeholder{color:#c9c5d2}
+  .land-field input:focus{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+  .land-field input.bad{border-color:#ff6b6b;box-shadow:0 0 0 2px rgba(229,9,20,.45)}
+  .land-cta{background:var(--red);border:0;color:#fff;border-radius:6px;padding:0 1.5rem;font-weight:800;font-size:1.22rem;cursor:pointer;min-height:3.55rem;display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
+  .land-cta:hover{background:var(--red-dark)}
+  .land-cta span{font-size:1.5rem;line-height:1;font-weight:400}
+  .land-err{color:#ff8f8f;font-weight:700;font-size:.92rem;margin:.7rem auto 0;max-width:600px}
+  .land-fine{color:#cfccd9;font-size:.88rem;margin:1rem 0 0}
+  .land-fine b{color:#7ee2a0}
+  .land-curve{position:relative;height:52px;overflow:hidden;z-index:2;margin-top:-6px}
+  .land-curve::before{content:"";position:absolute;left:50%;top:6px;transform:translateX(-50%);width:135%;height:220px;border-radius:50%;border-top:3px solid rgba(229,9,20,.9);background:radial-gradient(ellipse at 50% -30%,rgba(64,20,120,.5),rgba(0,0,0,0) 62%)}
+  .land-main{position:relative;z-index:2;background:#000}
+  .land-sec{max-width:1150px;margin:0 auto;padding:1.4rem clamp(.9rem,3.5vw,2rem) .6rem}
+  .land-sec>h2{font-size:1.45rem;margin:0 0 1.05rem;font-weight:800}
+  .land-trend{display:flex;gap:.4rem;overflow-x:auto;padding:.4rem .2rem 1rem;scrollbar-width:thin;scrollbar-color:#3a3a48 transparent}
+  .land-trend::-webkit-scrollbar{height:6px}
+  .land-trend::-webkit-scrollbar-thumb{background:#3a3a48;border-radius:99px}
+  .tcard{position:relative;flex:0 0 auto;display:flex;align-items:flex-end;background:none;border:0;padding:0;cursor:pointer;color:#fff;font-family:inherit;text-align:left}
+  .tcard .num{font-family:"Bebas Neue",sans-serif;font-size:6.4rem;line-height:.78;color:#0b0b0f;-webkit-text-stroke:2.5px #8d8d99;margin-right:-.85rem;position:relative;z-index:2;user-select:none}
+  .tcard .tpost{width:132px;aspect-ratio:2/3;border-radius:10px;overflow:hidden;background:var(--panel2);position:relative}
+  .tcard .tpost img{width:100%;height:100%;object-fit:cover}
+  .tcard .tpost::after{content:"▶ PLAY";position:absolute;left:.45rem;bottom:.45rem;background:rgba(0,0,0,.78);color:#7ee2a0;font-size:.6rem;font-weight:800;letter-spacing:.06em;padding:.2rem .45rem;border-radius:4px}
+  .tcard .tt{position:absolute;left:2.6rem;right:.2rem;bottom:-1.35rem;font-size:.8rem;font-weight:700;color:#d8d5e0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .land-trend{padding-bottom:2rem}
+  .land-reasons{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+  .reason{background:linear-gradient(160deg,#1d1830,#120e22 70%);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.15rem 1.1rem 1.25rem;min-height:158px}
+  .reason h3{margin:0 0 .5rem;font-size:1.06rem;line-height:1.3}
+  .reason p{margin:0;color:#b9b5c9;font-size:.87rem;line-height:1.55}
+  .reason .ric{font-size:1.5rem;display:block;margin-bottom:.7rem}
+  .land-faq details{border-bottom:1px solid rgba(255,255,255,.14)}
+  .land-faq summary{list-style:none;cursor:pointer;padding:1.05rem .2rem;font-size:1.08rem;font-weight:600;display:flex;align-items:center;gap:1rem;min-height:3rem}
+  .land-faq summary::-webkit-details-marker{display:none}
+  .land-faq summary::after{content:"+";margin-left:auto;font-size:1.6rem;font-weight:300;color:#fff}
+  .land-faq details[open ] summary::after{content:"×"}
+  .land-faq details p{margin:0;padding:0 .2rem 1.15rem;color:#cfccd9;line-height:1.65;max-width:75ch}
+  .land-bottom{max-width:760px;margin:0 auto;padding:2.2rem clamp(.9rem,3.5vw,2rem) 1rem;text-align:center}
+  .land-bottom .land-ready{margin-top:0}
+  .land-foot{max-width:1150px;margin:0 auto;padding:1.2rem clamp(.9rem,3.5vw,2rem) 2.6rem;color:var(--muted2);font-size:.82rem;line-height:1.7}
+  .land-foot b{color:#cfccd9}
+  @media(max-width:900px){.land-reasons{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){
+    .land-collage{grid-template-columns:repeat(3,1fr)}
+    .land-form{flex-direction:column}
+    .land-cta{justify-content:center;width:100%}
+    .land-lang{display:none}
+    .tcard .tpost{width:112px}
+    .tcard .num{font-size:5.2rem}
+    .land-reasons{grid-template-columns:1fr}
+    .reason{min-height:0}
+  }
+  /* ---------- ACCOUNT CHIP (nav, after email entry) ---------- */
+  .acct{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:99px;padding:.22rem .7rem .22rem .25rem;max-width:280px}
+  .acct[hidden]{display:none}
+  .acct-av{width:1.9rem;height:1.9rem;flex:none;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem}
+  .acct-mail{font-size:.8rem;font-weight:700;color:#e6e3da;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
+  .acct-out{background:none;border:0;color:var(--gold-soft);font-weight:800;font-size:.78rem;cursor:pointer;padding:.3rem .2rem;white-space:nowrap;min-height:2rem}
+  .acct-out:hover{text-decoration:underline}
+  @media(max-width:760px){.acct-mail{display:none}.acct{max-width:none}}
+
+  /* ---------- MODAL / CINEMA PLAYER ---------- */
+  .overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:0}
+  .overlay.open{display:flex}
+  .modal{background:#0a0a0d;border:0;border-radius:0;width:min(1440px,100%);min-height:100svh;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  @media(min-width:900px){.overlay{padding:1.2rem 1rem 2rem}.modal{min-height:0;border:1px solid var(--line);border-radius:14px}}
+  .cinema-bar{display:flex;align-items:center;gap:.7rem;padding:.65rem clamp(.8rem,2.5vw,1.4rem);background:#000;border-bottom:1px solid var(--line)}
+  .cinema-bar .live{display:inline-flex;align-items:center;gap:.45rem;background:var(--red);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.12em;padding:.32rem .6rem;border-radius:99px;white-space:nowrap}
+  .cinema-bar .live::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#fff;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .cinema-bar .now{font-weight:800;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+  .cinema-bar .live{flex:none}
+  .cinema-bar .here{color:var(--gold-soft);font-size:.8rem;font-weight:700;white-space:nowrap}
+  @media(max-width:640px){.cinema-bar .here{display:none}}
+  .player{position:relative;aspect-ratio:16/9;background:#000;max-height:calc(100svh - 190px)}
+  @media(max-width:640px){.player{max-height:none}}
+  .player iframe,.player #ytMount{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .player .novid{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-weight:700;text-align:center;padding:1rem}
+  .spinner{position:absolute;inset:0;display:grid;place-items:center;background:#000;z-index:2;pointer-events:none;transition:opacity .3s}
+  .spinner.hide{opacity:0}
+  .spinner i{width:52px;height:52px;border-radius:50%;border:4px solid rgba(255,255,255,.18);border-top-color:var(--red);animation:spin .8s linear infinite;display:block}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .spinner span{position:absolute;margin-top:5.6rem;color:#cfccd9;font-size:.85rem;font-weight:700}
+  .qualitybar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .7rem;padding:.75rem clamp(.8rem,2.5vw,1.4rem);background:#111116;border-bottom:1px solid var(--line)}
+  .qualitybar .qlabel{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .qpill{border:1px solid var(--line);background:var(--panel);color:#cfccd9;border-radius:99px;padding:.38rem .8rem;font-size:.82rem;font-weight:800;cursor:pointer;min-height:2.1rem}
+  .qpill:hover{color:#fff;border-color:rgba(255,255,255,.35)}
+  .qpill.on{background:#fff;color:#111;border-color:#fff}
+  .qnow{font-size:.83rem;color:#7ee2a0;font-weight:800}
+  .qualitybar .spacer{flex:1}
+  .fs-btn{background:#fff;color:#111;border:0;border-radius:6px;padding:.5rem .95rem;font-weight:800;font-size:.85rem;cursor:pointer;min-height:2.3rem}
+  .fs-btn:hover{background:rgba(255,255,255,.85)}
+  .qtip{width:100%;color:var(--muted);font-size:.8rem;line-height:1.5}
+  .qtip b{color:#e6e3da}
+  .player-fallback{position:absolute;inset:0;z-index:3;background:#000;display:grid;place-items:center;text-align:center;padding:1.4rem}
+  .player-fallback p{color:#d8d4c9;max-width:52ch;line-height:1.6;margin:.4rem auto 1rem}
+  .hd-badge{display:inline-block;background:var(--gold);color:#191203;font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:.2rem .5rem;border-radius:5px;vertical-align:middle}
+  .modal-body{padding:1.3rem clamp(1rem,3vw,1.8rem) 1.7rem}
+  .modal-body h2{font-family:"Bebas Neue",sans-serif;font-size:2.4rem;letter-spacing:.03em;margin:0;line-height:1}
+  .m-meta{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;margin:.7rem 0;color:#e6e3da;font-size:.9rem;font-weight:600}
+  .m-meta .match{color:#46d369;font-weight:800}
+  .m-meta .badge{border:1px solid rgba(255,255,255,.4);padding:.08rem .45rem;border-radius:4px;font-size:.74rem}
+  .modal-body p.desc{color:#d8d4c9;line-height:1.65;margin:.4rem 0 1rem;max-width:65ch}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem 1.4rem;font-size:.88rem;margin-bottom:1.2rem}
+  .kv div span{display:block;color:var(--muted2);font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.15rem}
+  .modal-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+  .close-x{position:absolute;top:.7rem;right:.7rem;z-index:5;width:2.5rem;height:2.5rem;border-radius:50%;border:0;background:rgba(10,10,12,.85);color:#fff;font-size:1.15rem;cursor:pointer}
+  .playerwrap{position:relative;background:#000}
+  .playerwrap:fullscreen{background:#000;display:flex;flex-direction:column;justify-content:center}
+  .playerwrap:fullscreen .player{max-height:none;flex:1}
+  .toast{position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,140%);z-index:120;background:#fff;color:#111;font-weight:800;font-size:.9rem;padding:.7rem 1.15rem;border-radius:99px;box-shadow:0 12px 34px rgba(0,0,0,.5);transition:transform .35s}
+  .toast.show{transform:translate(-50%,0)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body class="locked">
+<noscript><style>#landing{display:none}body{overflow:auto!important}</style></noscript>
+
+<!-- ============ LANDING — Netflix-style start: register email, then the full free movie site ============ -->
+<div class="landing" id="landing">
+  <div class="land-bg" aria-hidden="true">
+    <div class="land-collage" id="landCollage"></div>
+    <div class="land-shade"></div>
+  </div>
+
+  <header class="land-nav">
+    <a class="logo" href="#top">RETRO<span>CINEMA</span><small>HOLLYWOOD • BOLLYWOOD</small></a>
+    <div class="land-nav-r">
+      <span class="land-lang" aria-hidden="true">🌐 English</span>
+      <button class="land-signin" id="signInToggle" type="button">Sign In</button>
+    </div>
+  </header>
+
+  <section class="land-hero">
+    <h1 id="landH1">Unlimited classic movies, shows of the golden era, and more — <span class="free">all free</span></h1>
+    <p class="land-price" id="landSub">Price: ₹0. Forever. No card, no payment, nothing to cancel.</p>
+    <p class="land-ready" id="landReady">Ready to watch? Enter your email to register and open the full movie library.</p>
+    <form class="land-form gate-form" novalidate>
+      <label class="land-field">
+        <span class="sr">Email address</span>
+        <input type="email" class="gate-email" placeholder="Email address" autocomplete="email" inputmode="email" />
+      </label>
+      <button class="land-cta gate-btn" type="submit">Get Started <span aria-hidden="true">›</span></button>
+    </form>
+    <p class="land-err gate-err" hidden></p>
+    <p class="land-fine"><b>100% free</b> · 204 full movies · Hollywood + Bollywood · Plays right here in HD</p>
+  </section>
+
+  <div class="land-curve" aria-hidden="true"></div>
+
+  <div class="land-main">
+    <section class="land-sec">
+      <h2>Trending Now</h2>
+      <div class="land-trend" id="landTrend"></div>
+    </section>
+
+    <section class="land-sec">
+      <h2>More reasons to join</h2>
+      <div class="land-reasons">
+        <div class="reason"><span class="ric" aria-hidden="true">🎬</span><h3>Plays right here, in HD</h3><p>No app to install and no jumping to another site. Press Play and the full movie runs on this page itself, at the best quality available — up to 1080p HD.</p></div>
+        <div class="reason"><span class="ric" aria-hidden="true">🌏</span><h3>Hollywood + Bollywood</h3><p>Sholay, Mughal-e-Azam and Guide next to Charade, Nosferatu and Night of the Living Dead — 204 full classics from 1920–1983 in one library.</p></div>
+        <div class="reason"><span class="ric" aria-hidden="true">🆓</span><h3>₹0 forever — really</h3><p>No plans, no card details, no free trial that quietly turns paid. Your email opens the library, and that is the whole deal.</p></div>
+        <div class="reason"><span class="ric" aria-hidden="true">⭐</span><h3>Your own My List</h3><p>Save the classics you want for later while you browse, and build your perfect golden-era movie night.</p></div>
+      </div>
+    </section>
+
+    <section class="land-sec land-faq">
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>What can I watch on Retro Cinema?</summary>
+        <p>204 full-length classic movies, free: Bollywood's golden era (Sholay, Mughal-e-Azam, Guide, Pyaasa, Anand, Chupke Chupke, Gol Maal and more) and Hollywood classics (Charade, Nosferatu, His Girl Friday, Detour, Night of the Living Dead and more), from 1920 to 1983.</p>
+      </details>
+      <details>
+        <summary>Is it really free? What does it cost?</summary>
+        <p>Nothing — ₹0. There is no subscription, no card and no payment step. The films stream free through YouTube's official player: Bollywood titles from official studio and rights-holder channels, Hollywood titles that are in the public domain.</p>
+      </details>
+      <details>
+        <summary>Do the movies play on this website itself?</summary>
+        <p>Yes. Every movie plays inside this site's own cinema player, set to the highest quality the upload offers (up to 1080p HD), with quality buttons and a Full Screen mode. You don't leave the page to watch.</p>
+      </details>
+      <details>
+        <summary>Can I download movies to watch offline?</summary>
+        <p>Yes — for Hollywood's public-domain classics. Open any movie with the gold ⬇ MP4 badge (Charade, Nosferatu, Night of the Living Dead, Detour and more) and hit Download MP4 in the player: the full movie file, free from the Internet Archive, in sizes from about 140 MB to 3 GB. Bollywood titles are official rights-holder releases, so those stream here in HD only.</p>
+      </details>
+      <details>
+        <summary>Why do I need to enter an email?</summary>
+        <p>Your email is your free membership — enter it once on this start page and the full library opens: all rows, search, filters, the HD player and My List. No password, no card.</p>
+      </details>
+    </section>
+
+    <section class="land-bottom">
+      <p class="land-ready">Ready to watch? Enter your email to register and start watching free.</p>
+      <form class="land-form gate-form" novalidate>
+        <label class="land-field">
+          <span class="sr">Email address</span>
+          <input type="email" class="gate-email" placeholder="Email address" autocomplete="email" inputmode="email" />
+        </label>
+        <button class="land-cta gate-btn" type="submit">Get Started <span aria-hidden="true">›</span></button>
+      </form>
+      <p class="land-err gate-err" hidden></p>
+    </section>
+
+    <footer class="land-foot">
+      <b>Retro Cinema</b> — free classic Hollywood &amp; Bollywood full movies, played on this page in HD. Bollywood titles stream from official channels (Shemaroo, NH Studioz and other rights-holders); Hollywood titles are public-domain classics. No payment, ever.
+    </footer>
+  </div>
+</div>
+
+<header class="nav" id="topnav">
+  <a class="logo" href="#top">RETRO<span>CINEMA</span><small>HOLLYWOOD • BOLLYWOOD</small></a>
+  <nav class="nav-links" aria-label="Browse">
+    <a href="#row-trending">Trending</a>
+    <a href="#row-bollywood">Bollywood</a>
+    <a href="#row-hollywood">Hollywood</a>
+    <a href="#browse">Browse All</a>
+    <a href="#channels">Channels</a>
+  </nav>
+  <div class="nav-right">
+    <label class="searchbox">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+      <input id="searchInput" type="search" placeholder="Search titles, actors…" aria-label="Search movies" />
+    </label>
+    <div class="acct" id="acct" hidden>
+      <span class="acct-av" id="acctAv">?</span>
+      <span class="acct-mail" id="acctMail"></span>
+      <button class="acct-out" id="signOutBtn" type="button">Sign out</button>
+    </div>
+    <button class="mylist-btn" id="myListBtn" type="button">My List <b id="myListCount">0</b></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" aria-label="Featured movie">
+  <div class="hero-bg"><img id="heroImg" src="" alt="" /></div>
+  <div class="hero-shade"></div>
+  <div class="hero-content">
+    <span class="hero-kicker" id="heroKicker">Featured Classic</span>
+    <h1 class="hero-title" id="heroTitle">—</h1>
+    <div class="hero-meta" id="heroMeta"></div>
+    <p class="hero-desc" id="heroDesc"></p>
+    <div class="hero-actions">
+      <button class="btn btn-play" id="heroPlay" type="button">▶&nbsp; Play Here in HD</button>
+      <button class="btn btn-ghost" id="heroInfo" type="button">ⓘ&nbsp; More Info</button>
+      <button class="btn btn-ghost" id="heroList" type="button">+&nbsp; My List</button>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots" role="tablist" aria-label="Featured movies"></div>
+  <div class="hero-strip">
+    <div class="hero-strip-in">
+      <span><b id="statMovies">204</b> full movies</span>
+      <span><b>Plays here</b> — on this page, no leaving the site</span>
+      <span><b>HD quality</b> — player set to highest, up to 1080p where available</span>
+      <span><b>100% free</b> — no payment, no card, ever</span>
+      <span><b>Free downloads</b> — MP4 files for the public-domain classics</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filterbar">
+  <div class="filterbar-in">
+    <div class="tabs" role="tablist" aria-label="Industry">
+      <button type="button" class="on" data-ind="all">All</button>
+      <button type="button" data-ind="bollywood">Bollywood</button>
+      <button type="button" data-ind="hollywood">Hollywood</button>
+    </div>
+    <button class="chip on" type="button" data-genre="all">All genres</button>
+    <button class="chip" type="button" data-genre="Drama">Drama</button>
+    <button class="chip" type="button" data-genre="Comedy">Comedy</button>
+    <button class="chip" type="button" data-genre="Romance">Romance</button>
+    <button class="chip" type="button" data-genre="Horror">Horror</button>
+    <button class="chip" type="button" data-genre="Thriller">Thriller / Noir</button>
+    <button class="chip" type="button" data-genre="Action">Action</button>
+    <select id="decadeSel" aria-label="Filter by decade">
+      <option value="all">All decades</option>
+      <option value="1920">1920s</option>
+      <option value="1930">1930s</option>
+      <option value="1940">1940s</option>
+      <option value="1950">1950s</option>
+      <option value="1960">1960s</option>
+      <option value="1970">1970s</option>
+      <option value="1980">1980s</option>
+    </select>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+</div>
+
+<main>
+  <div id="rowsView">
+    <section class="row" id="row-trending"><div class="row-head"><h2>Trending Now</h2><p>The ones everyone re-watches</p><div class="row-nav"><button type="button" data-scroll="rail-trending" data-dir="-1" aria-label="Scroll left">‹</button><button type="button" data-scroll="rail-trending" data-dir="1" aria-label="Scroll right">›</button></div></div><div class="rail" id="rail-trending"></div></section>
+    <section class="row" id="row-bollywood"><div class="row-head"><h2>Bollywood Golden Era</h2><p>Full Hindi classics from official channels</p><div class="row-nav"><button type="button" data-scroll="rail-bollywood" data-dir="-1" aria-label="Scroll left">‹</button><button type="button" data-scroll="rail-bollywood" data-dir="1" aria-label="Scroll right">›</button></div></div><div class="rail" id="rail-bollywood"></div></section>
+    <section class="row" id="row-hollywood"><div class="row-head"><h2>Hollywood Classics</h2><p>Public-domain greats, free forever</p><div class="row-nav"><button type="button" data-scroll="rail-hollywood" data-dir="-1" aria-label="Scroll left">‹</button><button type="button" data-scroll="rail-hollywood" data-dir="1" aria-label="Scroll right">›</button></div></div><div class="rail" id="rail-hollywood"></div></section>
+    <section class="row" id="row-comedy"><div class="row-head"><h2>Comedy Classics</h2><p>Hrishikesh Mukherjee, Cary Grant &amp; more</p><div class="row-nav"><button type="button" data-scroll="rail-comedy" data-dir="-1" aria-label="Scroll left">‹</button><button type="button" data-scroll="rail-comedy" data-dir="1" aria-label="Scroll right">›</button></div></div><div class="rail" id="rail-comedy"></div></section>
+    <section class="row" id="row-dark"><div class="row-head"><h2>Horror, Noir &amp; Thriller</h2><p>After-dark essentials</p><div class="row-nav"><button type="button" data-scroll="rail-dark" data-dir="-1" aria-label="Scroll left">‹</button><button type="button" data-scroll="rail-dark" data-dir="1" aria-label="Scroll right">›</button></div></div><div class="rail" id="rail-dark"></div></section>
+    <section class="row" id="row-mylist" hidden><div class="row-head"><h2>My List</h2><p>Saved for your next movie night</p></div><div class="rail" id="rail-mylist"></div></section>
+  </div>
+
+  <section id="browse">
+    <div class="row-head" style="margin-top:2.4rem"><h2 id="browseTitle">Browse All Movies</h2><p id="browseSub">Every full movie in the library</p></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="emptyState" hidden><b>No movie found</b>Try a different title, actor or genre — or clear the search above.</div>
+  </section>
+
+  <section class="band" id="channels">
+    <h2>Where these movies come from</h2>
+    <p>Press Play and the full movie starts <strong style="color:#fff">right here on this page</strong> in the cinema player above — you don't leave Retro Cinema. The streams are delivered by YouTube's official player: Bollywood titles from the studios' and rights-holders' official channels, Hollywood titles from public-domain archives. The player is set to the highest quality the upload offers, up to 1080p HD.</p>
+    <div class="channels">
+      <div class="chan"><h3>Shemaroo Movies</h3><p>One of the biggest official libraries of old Bollywood — Guide, Aas Ka Panchhi and hundreds more golden-era full movies, free with ads.</p><a href="https://www.youtube.com/c/shemaroomovies/videos" target="_blank" rel="noopener">Open channel ↗</a></div>
+      <div class="chan"><h3>NH Studioz</h3><p>Rights-holder channel behind the official YouTube releases of Sholay, Anand and Chupke Chupke in HD.</p><a href="https://www.youtube.com/c/nhstudioztv" target="_blank" rel="noopener">Open channel ↗</a></div>
+      <div class="chan"><h3>Rajshri &amp; Ultra Movie Parlour</h3><p>Rajshri's family classics and Ultra's huge Hindi catalogue — search their names on YouTube for more full movies from the same era.</p></div>
+      <div class="chan"><h3>Public Domain Archives</h3><p>Feature Film, Film Masters and Cult Cinema Classics restore and stream Hollywood's public-domain greats — Charade, Detour, Nosferatu — legally free. These same classics are also free to <strong style="color:#fff">download as MP4</strong> from the Internet Archive — look for the gold ⬇ MP4 badge on a poster, or the Download button in the player.</p></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2>How it works</h2>
+    <p>Netflix-style browsing — the movie itself plays here, in HD.</p>
+    <div class="steps">
+      <div class="step"><b>01 — Pick</b><p>Browse the rows, filter by Hollywood / Bollywood, genre or decade, or search by title and actor.</p></div>
+      <div class="step"><b>02 — Play here in HD</b><p>Hit Play on any poster and the full movie starts right here in the big cinema player — set to the highest quality automatically. No tab switch, no leaving the site.</p></div>
+      <div class="step"><b>03 — Go bigger &amp; sharper</b><p>Use the Full Screen button under the player for a TV-like view. For the sharpest picture, pick 1080p / 720p from the Quality buttons — or tap the ⚙ gear inside the player → Quality.</p></div>
+      <div class="step"><b>04 — Download &amp; keep</b><p>Hollywood's public-domain classics (gold ⬇ MP4 badge) carry a Download MP4 button in the player — the full movie file, free from the Internet Archive, yours to watch offline forever. Bollywood's official-channel titles are streaming-only.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <b>Retro Cinema</b> plays every film on this page itself, streamed via YouTube's official player — Bollywood titles from official studio / rights-holder channels (Shemaroo, NH Studioz and others) and Hollywood titles that are in the public domain. Picture quality goes up to the best the original upload offers (up to 1080p HD); very old uploads may top out lower. Availability can change if a rights-holder updates a video. No streams are hosted on this page; where a Download button appears, the MP4 file is the public-domain copy served by the Internet Archive (archive.org).
+  </div>
+</footer>
+
+<!-- CINEMA PLAYER — movie plays HERE, on this page -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal">
+    <div class="cinema-bar">
+      <span class="live">NOW PLAYING HERE</span>
+      <span class="now" id="cinemaNow">—</span>
+      <span class="here">Watching on Retro Cinema • HD</span>
+    </div>
+    <div class="playerwrap" id="playerWrap">
+      <button class="close-x" id="closeModal" type="button" aria-label="Close player">✕</button>
+      <div class="player" id="playerBox">
+        <div id="ytMount"></div>
+        <div class="spinner" id="playerSpinner"><i></i><span>Loading in HD…</span></div>
+        <div class="player-fallback" id="playerFallback" hidden>
+          <div>
+            <strong style="font-size:1.1rem">This upload can't be played inside the page</strong>
+            <p>The rights-holder has switched off in-page playback for this one title. You can still watch the same full movie free in the YouTube app / site:</p>
+            <a class="btn btn-red" id="fallbackYt" href="#" target="_blank" rel="noopener">▶&nbsp; Watch this movie on YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="qualitybar" aria-label="Playback quality">
+      <span class="qlabel">Quality</span>
+      <button type="button" class="qpill on" data-q="hd1080">Auto HD • 1080p</button>
+      <button type="button" class="qpill" data-q="hd720">720p HD</button>
+      <button type="button" class="qpill" data-q="large">480p</button>
+      <span class="qnow" id="qNow">Setting highest quality…</span>
+      <span class="spacer"></span>
+      <button type="button" class="fs-btn" id="fsBtn">⛶&nbsp; Full Screen</button>
+      <span class="qtip"><b>Best picture tip:</b> quality buttons set the player to that level — if a very old upload was only released in 480p / 720p, it will play at that maximum. You can also tap <b>⚙ Settings → Quality</b> inside the player anytime.</span>
+    </div>
+    <div class="modal-body">
+      <h2 id="mTitle">—</h2>
+      <div class="m-meta" id="mMeta"></div>
+      <p class="desc" id="mDesc"></p>
+      <div class="kv" id="mKv"></div>
+      <div class="modal-actions">
+        <button class="btn btn-red" id="mReplay" type="button">▶&nbsp; Play from start — here</button>
+        <a class="btn btn-play" id="mDownload" href="#" target="_blank" rel="noopener" style="display:none">⬇&nbsp; Download MP4</a>
+        <button class="btn btn-ghost" id="mList" type="button">+&nbsp; My List</button>
+        <a class="btn btn-ghost" id="mYt" href="#" target="_blank" rel="noopener" style="opacity:.75;font-size:.88rem;padding:.72rem 1rem">Open in YouTube app (optional)</a>
+      </div>
+      <p class="dl-note" id="mDlNote"></p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var MOVIES = [
+ /* ---------------- BOLLYWOOD ---------------- */
+ {id:"pu6tUW-S_-8", t:"Sholay", y:1975, ind:"bollywood", g:["Action","Drama"], dur:"3h 24m", rating:"8.1", src:"NH Studioz", dir:"Ramesh Sippy", cast:"Amitabh Bachchan, Dharmendra, Hema Malini, Sanjeev Kumar, Amjad Khan", lang:"Hindi", trend:1, feat:1, desc:"Two small-time crooks, Jai and Veeru, are hired by a retired police officer to capture the ruthless dacoit Gabbar Singh. The biggest blockbuster in Indian cinema history — endlessly quoted, endlessly re-watched."},
+ {id:"BGL6zt5fs0c", t:"Mughal-e-Azam", y:1960, ind:"bollywood", g:["Romance","Drama"], dur:"3h 17m", rating:"8.1", src:"Official YouTube upload", dir:"K. Asif", cast:"Dilip Kumar, Madhubala, Prithviraj Kapoor", lang:"Hindi", trend:1, feat:1, desc:"Prince Salim falls in love with the court dancer Anarkali, defying his father Emperor Akbar and bringing the Mughal empire to the brink of war. A decade in the making, still Bollywood's grandest epic."},
+ {id:"NKvt7D-crEE", t:"Guide", y:1965, ind:"bollywood", g:["Romance","Drama"], dur:"3h 03m", rating:"8.3", src:"Shemaroo", dir:"Vijay Anand", cast:"Dev Anand, Waheeda Rehman", lang:"Hindi", trend:1, feat:1, desc:"A tour guide's affair with an unhappily married dancer lifts him to fame — and then to ruin and an unlikely sainthood. S.D. Burman's soundtrack and Dev Anand's finest performance make this an all-time great."},
+ {id:"WJK45r-j6TU", t:"Pyaasa", y:1957, ind:"bollywood", g:["Drama","Romance"], dur:"2h 26m", rating:"8.3", src:"YouTube", dir:"Guru Dutt", cast:"Guru Dutt, Waheeda Rehman, Mala Sinha", lang:"Hindi", trend:1, desc:"A rejected poet is only recognised after the world believes him dead. Guru Dutt's masterpiece — voted among the greatest films ever made — with Sahir's lyrics and the immortal 'Yeh Duniya Agar Mil Bhi Jaye'."},
+ {id:"IRG9i9z_nJM", t:"Shree 420", y:1955, ind:"bollywood", g:["Drama","Comedy"], dur:"2h 48m", rating:"8.0", src:"Eagle Movies", dir:"Raj Kapoor", cast:"Raj Kapoor, Nargis, Nadira", lang:"Hindi", desc:"An honest country boy comes to Bombay and is tempted into the world of fraudsters and easy money. Raj Kapoor's tramp classic, home to 'Mera Joota Hai Japani'."},
+ {id:"nK_SmZrjMPU", t:"Anand", y:1971, ind:"bollywood", g:["Drama"], dur:"2h 02m", rating:"8.6", src:"NH Studioz", dir:"Hrishikesh Mukherjee", cast:"Rajesh Khanna, Amitabh Bachchan", lang:"Hindi", trend:1, desc:"A terminally ill man who laughs through his last months teaches his pessimistic doctor how to live. 'Zindagi badi honi chahiye, lambi nahi, Babumoshai.' Keep tissues ready."},
+ {id:"khAB4UHSXAk", t:"Chupke Chupke", y:1975, ind:"bollywood", g:["Comedy","Romance"], dur:"2h 07m", rating:"8.3", src:"NH Studioz", dir:"Hrishikesh Mukherjee", cast:"Dharmendra, Sharmila Tagore, Amitabh Bachchan, Jaya Bachchan", lang:"Hindi", trend:1, desc:"A botany professor poses as a driver to prank his wife's pompous brother-in-law — and the whole household joins the game. The most beloved Hindi comedy of its era."},
+ {id:"jxPYbYeA-VQ", t:"Gol Maal", y:1979, ind:"bollywood", g:["Comedy","Romance"], dur:"2h 00m", rating:"8.5", src:"NH Studioz", dir:"Hrishikesh Mukherjee", cast:"Amol Palekar, Utpal Dutt, Bindiya Goswami", lang:"Hindi", desc:"To keep his job with a strict, tradition-loving boss, Ramprasad invents a twin brother — and has to live both lives. Amol Palekar and Utpal Dutt at their comic best."},
+ {id:"PzmUNgalHWA", t:"Aas Ka Panchhi", y:1961, ind:"bollywood", g:["Drama","Romance"], dur:"", rating:"", src:"Shemaroo Vintage", dir:"Mohan Kumar", cast:"Rajendra Kumar, Vyjayantimala", lang:"Hindi", desc:"A young man joins the army against his family's wishes and finds love and duty pulling him in opposite directions. A golden-era drama with songs by Shankar–Jaikishan."},
+ {id:"u15StmjNTMY", t:"Sindbad Alibaba Aur Alladin", y:1965, ind:"bollywood", g:["Action","Drama"], dur:"", rating:"", src:"Shemaroo", dir:"P. N. Arora", cast:"Pradeep Kumar, Sayeeda Khan, Agha", lang:"Hindi", desc:"Three legendary heroes of the Arabian Nights share one swashbuckling fantasy adventure — flying villains, magic and Rafi–Manna Dey songs, pure 60s Bollywood escapism."},
+
+ /* ---------------- HOLLYWOOD ---------------- */
+ {id:"2XJJWUfxZnY", t:"Charade", y:1963, ind:"hollywood", dl:"https://archive.org/download/charade-1963-cary-grant-audrey-hepburn-comedy-mystery-romance-thriller-full-movie/Charade_READY.mp4", dlsz:"425 MB", g:["Thriller","Romance","Comedy"], dur:"1h 53m", rating:"7.9", src:"Film Masters", dir:"Stanley Donen", cast:"Audrey Hepburn, Cary Grant, Walter Matthau", lang:"English", trend:1, feat:1, desc:"A Paris widow is hunted by three wartime thieves for a fortune her murdered husband hid — and the charming stranger helping her keeps changing his name. 'The best Hitchcock film Hitchcock never made.'"},
+ {id:"eFe-InXvszI", t:"Night of the Living Dead", y:1968, ind:"hollywood", dl:"https://archive.org/download/night-of-the-living-dead_202408/NIGHT%20OF%20THE%20LIVING%20DEAD.mp4", dlsz:"559 MB", g:["Horror","Thriller"], dur:"1h 36m", rating:"7.8", src:"Public Domain", dir:"George A. Romero", cast:"Duane Jones, Judith O'Dea, Karl Hardman", lang:"English", trend:1, feat:1, desc:"Strangers barricade themselves in a farmhouse as the dead rise outside. Romero's low-budget landmark invented the modern zombie film and changed horror forever."},
+ {id:"eQKAy32NcH8", t:"Nosferatu", y:1922, ind:"hollywood", dl:"https://archive.org/download/Nosferatu1922/Nosferatu.mp4", dlsz:"574 MB", g:["Horror"], dur:"1h 34m", rating:"7.9", src:"Public Domain", dir:"F. W. Murnau", cast:"Max Schreck, Gustav von Wangenheim, Greta Schröder", lang:"Silent", trend:1, desc:"Count Orlok brings his coffin and his plague to a quiet German town. The original screen Dracula story — a century old and still the scariest shadow in cinema."},
+ {id:"UzQWJNNg8DU", t:"His Girl Friday", y:1940, ind:"hollywood", dl:"https://archive.org/download/HisGirlFriday/MoviePowderPresentsHisGirlFriday.mp4", dlsz:"552 MB", g:["Comedy","Romance"], dur:"1h 32m", rating:"7.8", src:"Public Domain", dir:"Howard Hawks", cast:"Cary Grant, Rosalind Russell, Ralph Bellamy", lang:"English", desc:"Editor Walter Burns schemes to stop his star reporter — and ex-wife — Hildy from quitting and remarrying, using one last big story. The fastest-talking comedy ever made."},
+ {id:"UXVt1-rE8DE", t:"Detour", y:1945, ind:"hollywood", dl:"https://archive.org/download/detour1945HD/Detour.1945.1080p.BluRay.x264-%5BYTS.AM%5D.mp4", dlsz:"1.16 GB", g:["Thriller","Drama"], dur:"1h 08m", rating:"7.3", src:"Public Domain", dir:"Edgar G. Ulmer", cast:"Tom Neal, Ann Savage, Claudia Drake", lang:"English", desc:"A hitchhiking pianist takes one wrong ride and falls into the grip of cinema's most ferocious femme fatale. Shot in days, now preserved in the US National Film Registry."},
+ {id:"Z6FSseGGG3Y", t:"The Stranger", y:1946, ind:"hollywood", dl:"https://archive.org/download/TheStranger_0/The_Stranger.mp4", dlsz:"570 MB", g:["Thriller","Drama"], dur:"1h 35m", rating:"7.3", src:"The Film Detective", dir:"Orson Welles", cast:"Orson Welles, Edward G. Robinson, Loretta Young", lang:"English", desc:"A war-crimes investigator follows a released prisoner to a sleepy Connecticut town, hunting the Nazi mastermind hiding there as a respected teacher. Welles' tightest thriller."},
+ {id:"iNBu4cgyCxk", t:"Sherlock Holmes in Washington", y:1943, ind:"hollywood", dl:"https://archive.org/download/sherlock-holmes-in-washington/Sherlock%20Holmes%20in%20Washington.mp4", dlsz:"400 MB", g:["Thriller","Drama"], dur:"1h 11m", rating:"", src:"Feature Film", dir:"Roy William Neill", cast:"Basil Rathbone, Nigel Bruce", lang:"English", desc:"Holmes and Watson cross the Atlantic to recover a secret document hidden inside an ordinary matchbook. Wartime espionage with Rathbone's definitive detective."},
+ {id:"uB4OvE_oqw0", t:"Phantom of Chinatown", y:1940, ind:"hollywood", dl:"https://archive.org/download/phantom_of_chinatown/phantom_of_chinatown.mp4", dlsz:"378 MB", g:["Thriller","Drama"], dur:"1h 02m", rating:"", src:"Feature Film", dir:"Phil Rosen", cast:"Keye Luke, Grant Withers", lang:"English", desc:"Detective James Lee Wong investigates a murder tied to an ancient Chinese scroll. A landmark film — Keye Luke in a rare heroic lead role for 1940s Hollywood."},
+ {id:"97xv7WqvqoM", t:"Mr. Wong, Detective", y:1938, ind:"hollywood", dl:"https://archive.org/download/mrwongdetective/Mr%20Wong%20Detective.mp4", dlsz:"440 MB", g:["Thriller","Drama"], dur:"1h 09m", rating:"", src:"Feature Film", dir:"William Nigh", cast:"Boris Karloff, Grant Withers", lang:"English", desc:"Industrialists are dying in locked rooms, and only the unflappable Mr. Wong can see how. Boris Karloff trades horror for sleuthing in the first of the Wong mysteries."},
+ {id:"Ju_CNxQViiY", t:"The Little Shop of Horrors", y:1960, ind:"hollywood", dl:"https://archive.org/download/TheLittleShopOfHorrors1960/The-Little-Shop-of-Horrors.mp4", dlsz:"707 MB", g:["Horror","Comedy"], dur:"1h 12m", rating:"6.4", src:"Public Domain", dir:"Roger Corman", cast:"Jonathan Haze, Jackie Joseph, Jack Nicholson", lang:"English", desc:"A clumsy florist's assistant grows a plant that talks — and demands to be fed. Corman's two-day wonder, with a young Jack Nicholson, that later became a hit musical."},
+ {id:"fAazGGAnRF0", t:"A Bucket of Blood", y:1959, ind:"hollywood", dl:"https://archive.org/download/a-bucket-of-blood-1959/A%20Bucket%20of%20Blood%20%281959%29.mp4", dlsz:"881 MB", g:["Horror","Comedy"], dur:"1h 06m", rating:"6.7", src:"Public Domain", dir:"Roger Corman", cast:"Dick Miller, Barboura Morris, Antony Carbone", lang:"English", desc:"A beatnik café busboy becomes an art sensation after passing off a dead cat in clay as sculpture — and fame demands more 'works'. Corman's blackest comedy."},
+ {id:"KwMmS9FbjXw", t:"Barsaat", y:1949, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 50m", rating:"7.3", src:"Ultra Movie Parlour", dir:"Raj Kapoor", cast:"Raj Kapoor, Nargis, Prem Nath", lang:"Hindi", desc:"Two friends with opposite views of love — one a romantic poet, one a cynic — in the film that launched R.K. Films and gave Hindi cinema 'Barsaat Mein Humse Mile Tum'."},
+ {id:"qGStCuswnfw", t:"Daag", y:1952, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 17m", rating:"7.1", src:"Sadabahar HD Songs", dir:"Amiya Chakrabarty", cast:"Dilip Kumar, Nimmi, Usha Kiran", lang:"Hindi", desc:"A poor young man who makes clay toys falls for a rich girl, loses everything to drink and debt, and fights his way back. Dilip Kumar won his first Filmfare Best Actor award for this."},
+ {id:"pibhuQIFjHM", t:"Aar Paar", y:1954, ind:"bollywood", g:["Thriller", "Comedy"], dur:"2h 21m", rating:"7.0", src:"Prime Classic Cinema", dir:"Guru Dutt", cast:"Guru Dutt, Shyama, Shakila, Johnny Walker", lang:"Hindi", desc:"An ex-convict taxi driver gets tangled with smugglers, a garage owner's daughter and a nightclub dancer. Guru Dutt's lightest film — the evergreen 'Babuji Dheere Chalna' is from here."},
+ {id:"5vTH16nAXhY", t:"Devdas", y:1955, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 35m", rating:"7.6", src:"Shemaroo", dir:"Bimal Roy", cast:"Dilip Kumar, Vyjayanthimala, Suchitra Sen", lang:"Hindi", desc:"Devdas loves his childhood sweetheart Paro, but class and cowardice drive her into another marriage and him into drink and the arms of the courtesan Chandramukhi. The definitive screen version of Sarat Chandra's novel."},
+ {id:"Ibmb-T9t_nU", t:"House No. 44", y:1955, ind:"bollywood", g:["Thriller", "Drama"], dur:"1h 53m", rating:"", src:"Shemaroo", dir:"M. K. Burman", cast:"Dev Anand, Kalpana Kartik, K. N. Singh", lang:"Hindi", desc:"An unemployed man takes a job with a gang of thieves whose den is the house of the title, then falls for a girl who could be his way out. A moody Dev Anand noir with S.D. Burman songs."},
+ {id:"HWyIJ92Acjg", t:"Mother India", y:1957, ind:"bollywood", g:["Drama"], dur:"2h 55m", rating:"8.0", src:"Movies Heritage", dir:"Mehboob Khan", cast:"Nargis, Sunil Dutt, Rajendra Kumar, Raaj Kumar", lang:"Hindi", trend:1, desc:"Widowed and crushed by debt to a moneylender, Radha raises her sons on a sliver of land and refuses to surrender her honour — even to her own beloved son. India's first Oscar-nominated film and its defining epic."},
+ {id:"A8WC83r59zM", t:"Sharada", y:1957, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 15m", rating:"", src:"Ultra Movie Parlour", dir:"L. V. Prasad", cast:"Raj Kapoor, Meena Kumari, Shyama", lang:"Hindi", desc:"A wealthy young man sent abroad returns to find the woman he loved has, by a twist of fate, become his stepmother. A weepie in the grand 50s style, with Shankar–Jaikishan songs."},
+ {id:"ZL4-S6jta_k", t:"Chalti Ka Naam Gaadi", y:1958, ind:"bollywood", g:["Comedy", "Romance"], dur:"2h 44m", rating:"7.9", src:"Shemaroo Comedy", dir:"Satyen Bose", cast:"Kishore Kumar, Ashok Kumar, Anoop Kumar, Madhubala", lang:"Hindi", desc:"Three brothers run a garage; the eldest has sworn off women after a heartbreak — until a runaway heiress and her stalled car roll in. Kishore Kumar, his real brothers, and Madhubala in comedy's purest form."},
+ {id:"ckYpc9CkzRA", t:"Talaq", y:1958, ind:"bollywood", g:["Drama"], dur:"2h 30m", rating:"", src:"NH Studioz", dir:"Mahesh Kaul", cast:"Rajendra Kumar, Kamini Kadam", lang:"Hindi", desc:"A schoolmaster's marriage collapses under suspicion and pride, and the road back to his wife and child runs through public disgrace. A sombre 50s social drama about divorce and forgiveness."},
+ {id:"EL7qrmJaEbc", t:"Kaagaz Ke Phool", y:1959, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 17m", rating:"7.8", src:"Hindi Classics", dir:"Guru Dutt", cast:"Guru Dutt, Waheeda Rehman, Baby Naaz", lang:"Hindi", desc:"A celebrated director discovers a star, falls for her as his marriage dies, then loses everything as her fame eclipses his. India's first CinemaScope film — a flop in 1959, now counted among the greatest ever made."},
+ {id:"_-hYnQJmH-s", t:"Sujata", y:1959, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 32m", rating:"7.5", src:"Ultra Movie Parlour", dir:"Bimal Roy", cast:"Nutan, Sunil Dutt, Lalita Pawar", lang:"Hindi", desc:"An upper-caste family raises an orphaned 'untouchable' girl as their own — until caste prejudice and a marriage proposal tear at the pretence. Bimal Roy's humane classic, anchored by Nutan."},
+ {id:"I1ja-q81nJI", t:"Anari", y:1959, ind:"bollywood", g:["Comedy", "Drama"], dur:"2h 36m", rating:"7.3", src:"Shemaroo Movies", dir:"Hrishikesh Mukherjee", cast:"Raj Kapoor, Nutan, Lalita Pawar", lang:"Hindi", desc:"A guileless young painter is framed for theft by his employer's nephew, and his honesty disarms everyone around him. Raj Kapoor and Nutan in a gentle Hrishikesh Mukherjee comedy-drama."},
+ {id:"LUCXlbK01Ww", t:"Bombai Ka Babu", y:1960, ind:"bollywood", g:["Thriller", "Drama"], dur:"2h 28m", rating:"7.1", src:"Ultra Movie Parlour", dir:"Raj Khosla", cast:"Dev Anand, Suchitra Sen", lang:"Hindi", desc:"A conman returns to Bombay posing as a family's long-lost son to claim an inheritance — then falls for the girl who believes she is his sister. A daring Dev Anand noir with 'Dekhne Mein Bhola Hai'."},
+ {id:"Wi6AM4SOU48", t:"Ganga Jamuna", y:1961, ind:"bollywood", g:["Action", "Drama"], dur:"2h 37m", rating:"7.4", src:"Sadabahar HD Songs", dir:"Nitin Bose", cast:"Dilip Kumar, Vyjayanthimala, Nasir Khan", lang:"Hindi", desc:"Two brothers on opposite sides of the law — one a dacoit, one a policeman — in the Awadhi-speaking blockbuster that set the template for Deewaar and a hundred lost-and-found sagas."},
+ {id:"jygryiTYjkQ", t:"Sahib Bibi Aur Ghulam", y:1962, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 30m", rating:"7.9", src:"Mzaalo Classic Drama", dir:"Abrar Alvi", cast:"Guru Dutt, Meena Kumari, Waheeda Rehman, Rehman", lang:"Hindi", desc:"In a decaying feudal mansion, a young clerk watches the lonely mistress drink herself toward death while her husband looks away. Meena Kumari's greatest performance, and Guru Dutt's elegy for a dying world."},
+ {id:"Dm2fecJ7D8s", t:"Mere Mehboob", y:1963, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 33m", rating:"", src:"NH Studioz", dir:"H. S. Rawail", cast:"Rajendra Kumar, Sadhana, Ashok Kumar", lang:"Hindi", desc:"A Lucknow poet falls for a veiled girl he glimpses once, and fate — and a lost-and-found bracelet — keeps crossing their paths. Old Lucknow tehzeeb, Naushad's music, and Sadhana in a star-making role."},
+ {id:"1nwyncjnTYk", t:"Bin Badal Barsaat", y:1963, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 20m", rating:"", src:"NH Studioz", dir:"Jyoti Swaroop", cast:"Biswajeet, Asha Parekh, Mehmood", lang:"Hindi", desc:"A young man in a hill town falls for a girl shadowed by a family curse that says the women of her line die in childbirth. A misty 60s romance with Hemant Kumar's music."},
+ {id:"iQFYXtE6Wx0", t:"Sangam", y:1964, ind:"bollywood", g:["Romance", "Drama"], dur:"3h 40m", rating:"7.3", src:"Shemaroo Movies", dir:"Raj Kapoor", cast:"Raj Kapoor, Vyjayanthimala, Rajendra Kumar", lang:"Hindi", desc:"Two best friends love the same woman; a European honeymoon and a letter that was never meant to be read poison all three lives. Raj Kapoor's first colour film and a monumental hit — 'Bol Radha Bol Sangam Hoga Ki Nahin'."},
+ {id:"j15Xt0qqbLM", t:"Dosti", y:1964, ind:"bollywood", g:["Drama"], dur:"2h 44m", rating:"7.8", src:"Ultra Movie Parlour", dir:"Satyen Bose", cast:"Sushil Kumar, Sudhir Kumar, Sanjay Khan", lang:"Hindi", desc:"A blind singer and his lame friend busk on Bombay's streets to pay for an education and a dream. Laxmikant–Pyarelal's first Filmfare-winning score — 'Chahoonga Main Tujhe' still aches."},
+ {id:"OYh9QzIhPkg", t:"Daal Mein Kala", y:1964, ind:"bollywood", g:["Comedy"], dur:"2h 09m", rating:"", src:"NH Studioz", dir:"Satyan K Bose", cast:"Kishore Kumar, Nimmi, Om Prakash", lang:"Hindi", desc:"A penniless professor and his students land in a palace full of eccentrics, mistaken identities and something fishy in everyone's plans. Kishore Kumar in full masti mode."},
+ {id:"HJ5hU_s1nI0", t:"Waqt", y:1965, ind:"bollywood", g:["Drama"], dur:"2h 54m", rating:"7.6", src:"NH Studioz", dir:"Yash Chopra", cast:"Raaj Kumar, Sunil Dutt, Shashi Kapoor, Sadhana, Balraj Sahni", lang:"Hindi", desc:"An earthquake scatters a proud family; decades later the father and his three sons keep crossing paths without knowing each other. The original lost-and-found multi-starrer — 'Aye Meri Zohra Jabeen' and Bollywood's most quoted drawing-room scenes."},
+ {id:"pa0OrjpM-7E", t:"Himalay Ki God Mein", y:1965, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 18m", rating:"", src:"NH Studioz", dir:"Vijay Bhatt", cast:"Manoj Kumar, Mala Sinha", lang:"Hindi", desc:"A doctor flies into a remote Himalayan valley to serve villages that distrust modern medicine, and a local girl changes his plans. A Filmfare-winning hit with Kalyanji–Anandji evergreens like 'Chand Si Mehbooba'."},
+ {id:"v5uZS2Rhy5I", t:"Mere Sanam", y:1965, ind:"bollywood", g:["Romance", "Thriller"], dur:"2h 33m", rating:"", src:"NH Studioz", dir:"Amar Kumar", cast:"Biswajeet, Asha Parekh, Mumtaz, Pran", lang:"Hindi", desc:"A holiday in Kashmir, a girl who resembles a dead woman, and a hotel full of secrets. Home to two of Rafi's most romantic songs — 'Jaiye Aap Kahan Jayenge' and 'Pukarta Chala Hoon Main'."},
+ {id:"rulet8CrZSE", t:"Do Dil", y:1965, ind:"bollywood", g:["Romance", "Comedy"], dur:"2h 27m", rating:"", src:"NH Studioz", dir:"Hrishikesh Mukherjee", cast:"Biswajeet, Rajshree, Mumtaz, Mehmood", lang:"Hindi", desc:"A young man must choose between the girl he loves and the match his family has fixed — with Mehmood stealing every scene he's in. A light Hrishikesh Mukherjee romance from his gentlest period."},
+ {id:"zbMKxkKV4E8", t:"Daadi Maa", y:1966, ind:"bollywood", g:["Drama"], dur:"2h 52m", rating:"", src:"Ultra Movie Parlour", dir:"L. V. Prasad", cast:"Ashok Kumar, Bina Rai, Mumtaz, Durga Khote", lang:"Hindi", desc:"A widowed grandmother holds a fractured joint family together through poverty, pride and a grandson who strays. Old-school family melodrama powered by Durga Khote."},
+ {id:"z1-i6GbYaVM", t:"Diwana", y:1967, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 50m", rating:"", src:"NH Studioz", dir:"Mahesh Kaul", cast:"Raj Kapoor, Saira Banu, Lalita Pawar", lang:"Hindi", desc:"An orphan raised by a kindly widow falls for a rich girl, and a hidden past about his birth returns to claim him. Raj Kapoor and Saira Banu, with Shankar–Jaikishan's 'Diwana Mujhko Log Kahen'."},
+ {id:"YVprPb3vogU", t:"Raaz", y:1967, ind:"bollywood", g:["Thriller", "Romance"], dur:"2h 01m", rating:"", src:"NH Studioz", dir:"Ravindra Dave", cast:"Rajesh Khanna, Babita, I. S. Johar", lang:"Hindi", desc:"A young man travels to Africa to investigate his friend's mysterious death and finds a lookalike, a secret and a girl. Rajesh Khanna in one of his earliest starring roles, just before superstardom."},
+ {id:"FIVL_FISSak", t:"Brahmachari", y:1968, ind:"bollywood", g:["Comedy", "Romance"], dur:"2h 25m", rating:"7.0", src:"NH Studioz", dir:"Bhappi Sonie", cast:"Shammi Kapoor, Rajshree, Mumtaz, Pran", lang:"Hindi", desc:"An orphanage-running bachelor who has sworn off marriage keeps rescuing — and falling for — the same runaway girl. Shammi Kapoor won Filmfare Best Actor; 'Aaj Kal Tere Mere Pyar Ke Charche' is pure joy."},
+ {id:"RMbqs78SSdc", t:"Aradhana", y:1969, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 51m", rating:"7.6", src:"Ultra Movie Parlour", dir:"Shakti Samanta", cast:"Rajesh Khanna, Sharmila Tagore, Farida Jalal", lang:"Hindi", trend:1, desc:"An air force officer dies before he can marry the girl carrying his child; years later, the son she gave up returns — not knowing her. The film that made Rajesh Khanna India's first superstar: 'Mere Sapno Ki Rani' on a toy train is cinema history."},
+ {id:"kZeF042O8Ok", t:"Ittefaq", y:1969, ind:"bollywood", g:["Thriller"], dur:"1h 43m", rating:"7.3", src:"NH Studioz", dir:"Yash Chopra", cast:"Rajesh Khanna, Nanda, Bindu", lang:"Hindi", desc:"An escaped murder suspect holds a rich woman hostage for one rainy night — and by morning, nothing about either of them is what it seemed. A songless, single-night thriller decades ahead of its time."},
+ {id:"fB58AYwjuXQ", t:"Johny Mera Naam", y:1970, ind:"bollywood", g:["Action", "Thriller"], dur:"2h 47m", rating:"7.4", src:"Shemaroo Movies", dir:"Vijay Anand", cast:"Dev Anand, Hema Malini, Pran", lang:"Hindi", desc:"Twin brothers separated in childhood grow up on opposite sides of the law — a CID officer and a smuggler who don't know each other. The blockbuster that defined the 70s masala thriller, with 'Pal Bhar Ke Liye'."},
+ {id:"TvVowinx5MM", t:"Suhana Safar", y:1970, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 04m", rating:"", src:"NH Studioz", dir:"Sandow M. M. A. Chinnappa Thevar", cast:"Shashi Kapoor, Sharmila Tagore", lang:"Hindi", desc:"A forest officer on tour through the hills finds love, poachers and trouble among the trees. A breezy Shashi Kapoor–Sharmila Tagore romance shot in lush hill country."},
+ {id:"134iwDdUxyo", t:"Pakeezah", y:1972, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 28m", rating:"7.3", src:"Shemaroo Movies", dir:"Kamal Amrohi", cast:"Meena Kumari, Raaj Kumar, Ashok Kumar", lang:"Hindi", desc:"A Lucknow courtesan with a poet's heart longs for a respectable love that society will never permit her. Fourteen years in the making — Meena Kumari died weeks after its release, and it became her immortal farewell: 'Chalte Chalte', 'Inhi Logon Ne'."},
+ {id:"RGktFa9mjns", t:"Amar Prem", y:1972, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 40m", rating:"7.9", src:"Film City HD", dir:"Shakti Samanta", cast:"Rajesh Khanna, Sharmila Tagore, Vinod Mehra", lang:"Hindi", desc:"A kind-hearted courtesan, the lonely businessman who visits her, and the little boy from the village who calls her mother. 'Pushpa, I hate tears' — the line, the film, the heartbreak are all immortal."},
+ {id:"vRlKi488c2o", t:"Seeta Aur Geeta", y:1972, ind:"bollywood", g:["Comedy", "Drama"], dur:"2h 28m", rating:"7.4", src:"NH Studioz", dir:"Ramesh Sippy", cast:"Hema Malini, Dharmendra, Sanjeev Kumar", lang:"Hindi", desc:"Twin sisters separated at birth — one timid and tormented, one a street-smart performer — swap lives. Hema Malini's double role is a masterclass, three years before the same director made Sholay."},
+ {id:"zZZs_te5rbs", t:"Roti Kapda Aur Makaan", y:1974, ind:"bollywood", g:["Drama"], dur:"2h 27m", rating:"7.1", src:"2 Hero Movies", dir:"Manoj Kumar", cast:"Manoj Kumar, Amitabh Bachchan, Zeenat Aman, Shashi Kapoor, Moushumi Chatterjee", lang:"Hindi", desc:"An honest graduate who can't find work watches his family starve while his brothers take darker paths — and turns to crime himself. Manoj Kumar's biggest hit: the title became Hindi shorthand for life's bare necessities."},
+ {id:"UKXLknjLcDU", t:"Deewaar", y:1975, ind:"bollywood", g:["Action", "Drama"], dur:"2h 46m", rating:"8.0", src:"Shemaroo Movies", dir:"Yash Chopra", cast:"Amitabh Bachchan, Shashi Kapoor, Nirupa Roy, Parveen Babi, Neetu Singh", lang:"Hindi", trend:1, desc:"One brother becomes a smuggler, the other a cop; their mother is the wall between them. Salim–Javed's script and 'Mere paas maa hai' made this the defining film of the Angry Young Man era."},
+ {id:"zJKmjDpKvCE", t:"Aandhi", y:1975, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 19m", rating:"7.9", src:"Ultra Movie Parlour", dir:"Gulzar", cast:"Sanjeev Kumar, Suchitra Sen", lang:"Hindi", desc:"A powerful woman politician checks into a hotel run by the husband she left years ago — and one monsoon night brings back everything they buried. Gulzar's most political film, briefly banned during the Emergency."},
+ {id:"eelMqYCzGfA", t:"Amar Akbar Anthony", y:1977, ind:"bollywood", g:["Action", "Comedy", "Drama"], dur:"2h 46m", rating:"7.4", src:"Shemaroo Movies", dir:"Manmohan Desai", cast:"Amitabh Bachchan, Vinod Khanna, Rishi Kapoor, Parveen Babi, Neetu Singh, Shabana Azmi", lang:"Hindi", desc:"Three brothers separated in childhood are raised Hindu, Muslim and Christian, and fate keeps slamming them back together. The ultimate Manmohan Desai masala — lost and found, tripled."},
+ {id:"73Vm0qVWpn0", t:"Ek Duuje Ke Liye", y:1981, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 43m", rating:"7.5", src:"Ultra Movie Parlour", dir:"K. Balachander", cast:"Kamal Haasan, Rati Agnihotri, Madhavi", lang:"Hindi", desc:"A Tamil boy and a Goan girl fall in love across a wall of language, family hatred and geography — and the ending still shocks. K. Balachander remade his own Telugu hit and launched Kamal Haasan in Hindi cinema."},
+ {id:"KcM-ZMwaliE", t:"Prem Rog", y:1982, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 58m", rating:"7.1", src:"Indian Cinema", dir:"Raj Kapoor", cast:"Rishi Kapoor, Padmini Kolhapure, Shammi Kapoor", lang:"Hindi", desc:"A poor young man loves a rich girl widowed within days of her arranged marriage, and fights a feudal household for her right to live again. Raj Kapoor's boldest social drama — and a career peak for both leads."},
+ {id:"hAhUlJy1EGc", t:"Coolie", y:1983, ind:"bollywood", g:["Action", "Drama"], dur:"2h 56m", rating:"6.7", src:"Ultra Movie Parlour", dir:"Manmohan Desai", cast:"Amitabh Bachchan, Rishi Kapoor, Rati Agnihotri, Waheeda Rehman", lang:"Hindi", desc:"Separated from his mother by a villain's flood plot, a boy grows up a railway coolie with a falcon for a friend and a union to lead. The film on whose sets Bachchan nearly died — and a whole nation prayed."},
+ {id:"V88h_NvPIKU", t:"Awaara", y:1951, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 44m", rating:"7.8", src:"Shemaroo", dir:"Raj Kapoor", cast:"Raj Kapoor, Nargis, Prithviraj Kapoor", lang:"Hindi", trend:1, desc:"A judge's son, raised in the slums after a kidnapping, grows up a thief — and ends up in his own father's courtroom. The film that made Raj Kapoor a household name from Moscow to Beijing."},
+ {id:"IFWkGbIs_u8", t:"Madhumati", y:1958, ind:"bollywood", g:["Romance", "Thriller"], dur:"2h 44m", rating:"7.9", src:"Sadabahar HD Songs", dir:"Bimal Roy", cast:"Dilip Kumar, Vyjayanthimala, Pran", lang:"Hindi", trend:1, desc:"Sheltering from a storm in a haunted mansion, a man remembers a past life: a manager, a tribal girl, and a death that demands justice across births. Bimal Roy's reincarnation masterpiece swept nine Filmfare awards."},
+ {id:"Nz3Ph-I8YPY", t:"Naya Daur", y:1957, ind:"bollywood", g:["Drama", "Action"], dur:"2h 54m", rating:"7.7", src:"Shemaroo Movies", dir:"B. R. Chopra", cast:"Dilip Kumar, Vyjayanthimala", lang:"Hindi", desc:"A tonga-driver leads his village's horse-carts in a race against the landlord's new bus — man and tradition against the machine. B.R. Chopra's rousing classic, famous for its climactic race."},
+ {id:"k8WjeC4B_yI", t:"C.I.D.", y:1956, ind:"bollywood", g:["Thriller", "Action"], dur:"2h 20m", rating:"7.3", src:"Sadabahar HD Songs", dir:"Raj Khosla", cast:"Dev Anand, Waheeda Rehman, Shakila, Johnny Walker", lang:"Hindi", desc:"A police inspector hunts a crime lord while witnesses keep turning up dead. Waheeda Rehman's debut, Johnny Walker's 'Aye Dil Hai Mushkil' — and Dev Anand at his most debonair."},
+ {id:"72qLogUlJRQ", t:"Jagte Raho", y:1956, ind:"bollywood", g:["Drama", "Comedy"], dur:"2h 18m", rating:"7.9", src:"Shemaroo Movies", dir:"Amit Maitra & Sombhu Mitra", cast:"Raj Kapoor, Nargis (guest), Motilal", lang:"Hindi", desc:"A thirsty peasant wanders into a respectable apartment block at night and is chased as a thief — discovering every respectable resident's hidden crime on the way. Raj Kapoor's satire won the top prize at Karlovy Vary."},
+ {id:"_a5cZ6OkgmA", t:"Do Bigha Zamin", y:1953, ind:"bollywood", g:["Drama"], dur:"2h 00m", rating:"8.3", src:"Shemaroo", dir:"Bimal Roy", cast:"Balraj Sahni, Nirupa Roy", lang:"Hindi", desc:"A farmer fights a landlord for his two acres — the family's whole world — and ends up pulling a rickshaw in Calcutta to pay the debt. The film that put Indian neorealism on the world map; a prize-winner at Cannes."},
+ {id:"wKQDyWfezBk", t:"Boot Polish", y:1954, ind:"bollywood", g:["Drama"], dur:"2h 18m", rating:"7.8", src:"Shemaroo", dir:"Prakash Arora", cast:"Baby Naaz, Rattan Kumar, David", lang:"Hindi", desc:"Two orphaned siblings shine shoes on Bombay's streets, refusing to beg even when hunger tempts them. Produced by Raj Kapoor — a Filmfare winner that played Cannes."},
+ {id:"mCP-ZV4ZJqE", t:"Bandini", y:1963, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 25m", rating:"7.7", src:"Zee Movies Hindi", dir:"Bimal Roy", cast:"Nutan, Ashok Kumar, Dharmendra", lang:"Hindi", desc:"A woman prisoner tells the jail doctor why she committed murder — a life of duty, a married lover, and one moment of madness. Nutan's greatest performance, in Bimal Roy's most lyrical film."},
+ {id:"Fuq1naD4gWU", t:"Bees Saal Baad", y:1962, ind:"bollywood", g:["Horror", "Thriller"], dur:"2h 24m", rating:"7.2", src:"Zee Music Classic", dir:"Biren Nag", cast:"Biswajeet, Waheeda Rehman", lang:"Hindi", desc:"A young heir returns to his ancestral mansion where a family curse — and something that walks at night — has killed for twenty years. The film that started Bollywood's gothic horror wave: 'Kahin Deep Jale Kahin Dil'."},
+ {id:"_u9MB1APfEc", t:"Howrah Bridge", y:1958, ind:"bollywood", g:["Thriller", "Romance"], dur:"2h 27m", rating:"", src:"YouTube", dir:"Shakti Samanta", cast:"Ashok Kumar, Madhubala, Madan Puri", lang:"Hindi", desc:"A man from Rangoon comes to Calcutta to recover a stolen family heirloom and walks into a nightclub world of smugglers and song. immortal for one reason above all: 'Aaiye Meharbaan' — Madhubala, at her most luminous."},
+ {id:"TcR5zvFAAFA", t:"Junglee", y:1961, ind:"bollywood", g:["Romance", "Comedy"], dur:"2h 41m", rating:"7.2", src:"Eagle Classic Movies", dir:"Subodh Mukherji", cast:"Shammi Kapoor, Saira Banu, Lalita Pawar", lang:"Hindi", desc:"A stern, laughter-hating young mill-owner is packed off to Kashmir, where a free-spirited girl teaches him to shout 'Yahoo!' at life. The film that invented the Shammi Kapoor persona — and Saira Banu's debut."},
+ {id:"PgJ6H8zPfxI", t:"Teen Devian", y:1965, ind:"bollywood", g:["Romance", "Comedy"], dur:"2h 16m", rating:"", src:"Shemaroo", dir:"Amarjeet", cast:"Dev Anand, Kalpana, Simi Garewal, Nanda", lang:"Hindi", desc:"A poet splits his heart three ways — a small-town girl, a film star and a modern socialite — in 60s Bombay's most charming romantic roundelay. Dev Anand, three heroines, and 'Khwab Ho Tum Ya Koi Haqeeqat'."},
+ {id:"n1Bt8avkN7k", t:"Ram Aur Shyam", y:1967, ind:"bollywood", g:["Comedy", "Drama"], dur:"2h 51m", rating:"7.4", src:"Eros Universe", dir:"Tapi Chanakya", cast:"Dilip Kumar, Waheeda Rehman, Mumtaz, Pran", lang:"Hindi", desc:"Identical twins separated at birth — one meek and bullied, one bold and fearless — swap places and turn a tyrannical household upside down. The template for Seeta Aur Geeta, ChaalBaaz and every twin comedy since."},
+ {id:"B_KJqH_oKTQ", t:"Mili", y:1975, ind:"bollywood", g:["Drama", "Romance"], dur:"1h 56m", rating:"7.7", src:"NH Studioz", dir:"Hrishikesh Mukherjee", cast:"Amitabh Bachchan, Jaya Bachchan, Ashok Kumar", lang:"Hindi", desc:"A bubbly girl who spreads joy through her housing society slowly melts the bitter, brooding man upstairs — while hiding a truth about her own health. Hrishikesh Mukherjee's tenderest film."},
+ {id:"YdpFOXwitl4", t:"Mr. Natwarlal", y:1979, ind:"bollywood", g:["Action", "Comedy"], dur:"2h 36m", rating:"6.8", src:"Goldmines Bollywood", dir:"Rakesh Kumar", cast:"Amitabh Bachchan, Rekha, Amjad Khan", lang:"Hindi", desc:"A conman frames the honest officer who once jailed his family, then teams up with a whole village to rob the villain blind. Bachchan sang his first playback song here — 'Mere Paas Aao Mere Doston'."},
+ {id:"NPVzd_7UQRQ", t:"Don", y:1978, ind:"bollywood", g:["Action", "Thriller"], dur:"2h 40m", rating:"7.7", src:"Revere Records", dir:"Chandra Barot", cast:"Amitabh Bachchan, Zeenat Aman, Pran, Helen", lang:"Hindi", trend:1, desc:"When crime lord Don dies in a police chase, a lookalike paan-chewing nobody is planted in his gang to bring it down — until the one officer who knew the secret is killed. 'Don ko pakadna mushkil hi nahi…' — you know the rest."},
+ {id:"XcbuC3LPQS4", t:"Jewel Thief", y:1967, ind:"bollywood", g:["Thriller", "Action"], dur:"3h 06m", rating:"7.8", src:"YouTube", dir:"Vijay Anand", cast:"Dev Anand, Vyjayanthimala, Ashok Kumar, Tanuja", lang:"Hindi", desc:"A jewel expert keeps being mistaken for a master thief who may not even exist — and the police use him as bait. Vijay Anand's twist-laden caper, with 'Yeh Dil Na Hota Bechara' and a Hitchcock finish."},
+ {id:"PQGeZZkVm7I", t:"Satyakam", y:1969, ind:"bollywood", g:["Drama"], dur:"2h 37m", rating:"7.8", src:"Ultra 4K Movies", dir:"Hrishikesh Mukherjee", cast:"Dharmendra, Sharmila Tagore, Sanjeev Kumar, Ashok Kumar", lang:"Hindi", desc:"An idealist engineer refuses every compromise post-Independence India offers him, and pays for his honesty with everything he has. Hrishikesh Mukherjee's most uncompromising film — a National Award winner."},
+ {id:"ycf3hoUyUUI", t:"Milan", y:1967, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 43m", rating:"7.2", src:"Ultra Movie Parlour", dir:"Adurthi Subba Rao", cast:"Sunil Dutt, Nutan, Jamuna", lang:"Hindi", desc:"A boatman and a zamindar's daughter love across class lines, die for it, and meet again in another birth that remembers everything. A reincarnation romance carried by Mukesh's 'Sawan Ka Mahina'."},
+ {id:"1EorKpoSu8w", t:"Khilona", y:1970, ind:"bollywood", g:["Drama"], dur:"2h 48m", rating:"7.5", src:"Ultra Movie Parlour", dir:"Chander Vohra", cast:"Sanjeev Kumar, Mumtaz, Jeetendra", lang:"Hindi", desc:"A poet who has lost his mind after witnessing a murder is 'treated' by his family with a courtesan hired to pose as his wife — and she becomes his only real cure. Sanjeev Kumar won Filmfare Best Actor."},
+ {id:"PmVitbHhir4", t:"Aap Ki Kasam", y:1974, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 34m", rating:"7.1", src:"Ultra Movie Parlour", dir:"J. Om Prakash", cast:"Rajesh Khanna, Mumtaz, Sanjeev Kumar", lang:"Hindi", desc:"A suspicious husband destroys his own marriage over a friendship he misreads, and spends his life in regret. The film that gave Hindi cinema 'Zindagi Ke Safar Mein Guzar Jaate Hain Jo Makaam'."},
+ {id:"ondS4gUvnI0", t:"Parichay", y:1972, ind:"bollywood", g:["Comedy", "Drama"], dur:"2h 18m", rating:"7.6", src:"Ultra 4K Movies", dir:"Gulzar", cast:"Jeetendra, Jaya Bachchan, Sanjeev Kumar, Pran", lang:"Hindi", desc:"An unemployed graduate is hired to tame five unruly orphans who have driven away every tutor — armed with patience, music and a guitar. Gulzar's Hindi take on The Sound of Music's spirit."},
+ {id:"eX_1Q9MwLEA", t:"Satyam Shivam Sundaram", y:1978, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 48m", rating:"6.8", src:"Ultra 4K Movies", dir:"Raj Kapoor", cast:"Shashi Kapoor, Zeenat Aman, Padmini Kolhapure", lang:"Hindi", desc:"An engineer falls for a village girl's divine voice without seeing her scarred face — and their marriage becomes a war between beauty and truth. Raj Kapoor's most debated film, with Lata's title song for the ages."},
+ {id:"5C3kCkcarq0", t:"Gumnaam", y:1965, ind:"bollywood", g:["Thriller", "Horror"], dur:"2h 15m", rating:"7.2", src:"Shemaroo Movies", dir:"Raja Nawathe", cast:"Manoj Kumar, Nanda, Mehmood, Helen", lang:"Hindi", desc:"Eight strangers win a holiday and are marooned on an island where guests start turning up dead. Bollywood's Agatha Christie riff — and the source of the immortal 'Gumnaam Hai Koi'."},
+ {id:"hHU9-pY8w48", t:"Trishul", y:1978, ind:"bollywood", g:["Action", "Drama"], dur:"2h 38m", rating:"7.6", src:"Shemaroo Movies", dir:"Yash Chopra", cast:"Amitabh Bachchan, Sanjeev Kumar, Shashi Kapoor, Hema Malini, Raakhee", lang:"Hindi", desc:"An illegitimate son builds a construction empire for one purpose: to destroy the father who abandoned his mother. Salim–Javed again, Bachchan again — the 70s revenge saga at full power."},
+ {id:"TBSjGjhFvnI", t:"Hera Pheri", y:1976, ind:"bollywood", g:["Comedy", "Action"], dur:"2h 37m", rating:"7.1", src:"Shemaroo Movies", dir:"Prakash Mehra", cast:"Amitabh Bachchan, Vinod Khanna, Saira Banu", lang:"Hindi", desc:"Two small-time conmen plan one last big job — a diamond heist that needs them to pose as everything from waiters to sheikhs. Prakash Mehra's comedy caper, years before the title became a franchise."},
+ {id:"iIE-Nq7FxTU", t:"Abhimaan", y:1973, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 02m", rating:"7.9", src:"Shemaroo Movies", dir:"Hrishikesh Mukherjee", cast:"Amitabh Bachchan, Jaya Bachchan, Asrani", lang:"Hindi", desc:"A star singer marries a village girl whose voice turns out to be greater than his — and success poisons the marriage. Hrishikesh Mukherjee's finest marital drama, with S.D. Burman's last great score."},
+ {id:"04TeetibvNQ", t:"Chhoti Si Baat", y:1976, ind:"bollywood", g:["Comedy", "Romance"], dur:"1h 59m", rating:"7.9", src:"NH Studioz", dir:"Basu Chatterjee", cast:"Amol Palekar, Vidya Sinha, Ashok Kumar, Asrani", lang:"Hindi", desc:"A shy clerk who can't confess his love hires a retired colonel to coach him in confidence — while his rival sabotages him daily. The definitive middle-class Bombay romance, all local trains and office peons."},
+ {id:"R-VQ-4Qsag0", t:"Bawarchi", y:1972, ind:"bollywood", g:["Comedy", "Drama"], dur:"2h 06m", rating:"7.9", src:"NH Studioz", dir:"Hrishikesh Mukherjee", cast:"Rajesh Khanna, Jaya Bachchan, Asrani", lang:"Hindi", desc:"A mysteriously cheerful cook arrives at a quarrelling household and quietly repairs every relationship in it. The gentle original that later inspired a generation of feel-good remakes."},
+ {id:"N_JYKRUbm1A", t:"Koshish", y:1972, ind:"bollywood", g:["Drama", "Romance"], dur:"1h 56m", rating:"8.2", src:"NH Studioz", dir:"Gulzar", cast:"Sanjeev Kumar, Jaya Bachchan", lang:"Hindi", desc:"A deaf-mute couple marry, work, and raise a hearing son in a world that won't meet them halfway. Gulzar's National Award-winning film, told almost entirely without dialogue between its leads."},
+ {id:"eSZ-wwYMfes", t:"Guddi", y:1971, ind:"bollywood", g:["Comedy", "Drama"], dur:"1h 55m", rating:"7.7", src:"NH Studioz", dir:"Hrishikesh Mukherjee", cast:"Jaya Bhaduri, Dharmendra, Samit Bhanja", lang:"Hindi", desc:"A schoolgirl so obsessed with movie star Dharmendra that she refuses to marry is cured of her fantasy by the star himself. Jaya Bhaduri's debut and Hrishikesh Mukherjee's sweetest reality check on stardom."},
+ {id:"x4VGtsZ3isY", t:"Sunghursh", y:1968, ind:"bollywood", g:["Drama", "Action"], dur:"2h 21m", rating:"", src:"NH Studioz", dir:"Harnam Singh Rawail", cast:"Dilip Kumar, Vyjayanthimala, Sanjeev Kumar, Balraj Sahni", lang:"Hindi", desc:"In old Banaras, two feuding families of thugs produce a grandson who tries to break the cycle of revenge. Dilip Kumar and Sanjeev Kumar face off in a brooding period drama."},
+ {id:"a8aDwaf6zEg", t:"Aan", y:1952, ind:"bollywood", g:["Action", "Romance"], dur:"2h 32m", rating:"6.8", src:"Shemaroo Movies", dir:"Mehboob Khan", cast:"Dilip Kumar, Nimmi, Nadira, Prem Nath", lang:"Hindi", desc:"A peasant leads his village against a tyrannical prince and the princess who first scorns, then loves him. India's first Technicolor film — a swashbuckler made to conquer the world, and it did."},
+ {id:"cK1ATBL0au4", t:"Tumsa Nahin Dekha", y:1957, ind:"bollywood", g:["Romance", "Comedy"], dur:"2h 25m", rating:"", src:"Shemaroo Movies", dir:"Nasir Hussain", cast:"Shammi Kapoor, Ameeta, Pran", lang:"Hindi", desc:"A wayward son returns home in disguise as a servant to win back his estranged father's trust — and falls for the household's spirited girl. The frothy hit that first unleashed Shammi Kapoor's rebel-star energy."},
+ {id:"MkAT_fna4dw", t:"Navrang", y:1959, ind:"bollywood", g:["Romance", "Drama"], dur:"2h 38m", rating:"7.2", src:"Shemaroo Movies", dir:"V. Shantaram", cast:"Sandhya, Mahipal", lang:"Hindi", desc:"A poet so lost in his imaginary muse that he sees her in every woman — while his real wife waits unseen. V. Shantaram's colour-drenched fantasy on art, marriage and imagination."},
+ {id:"qyFglscBoBM", t:"Zameer", y:1975, ind:"bollywood", g:["Action", "Drama"], dur:"2h 09m", rating:"", src:"NH Studioz", dir:"Ravi Chopra", cast:"Amitabh Bachchan, Saira Banu, Vinod Khanna, Shammi Kapoor", lang:"Hindi", desc:"A horse trainer is hired to impersonate a zamindar's long-lost son — and the impostor starts protecting the family better than its own blood. A mid-70s Bachchan entertainer with Shammi Kapoor stealing scenes."},
+ {id:"wR8t_Ktb0uY", t:"Kasme Vaade", y:1978, ind:"bollywood", g:["Action", "Drama"], dur:"2h 27m", rating:"", src:"Shemaroo Movies", dir:"Ramesh Behl", cast:"Amitabh Bachchan, Raakhee, Randhir Kapoor, Neetu Singh", lang:"Hindi", desc:"A professor is murdered by the gang his younger brother runs with; years later a lookalike stranger walks into their lives. Bachchan in a double role, in a drama of guilt and second chances."},
+ {id:"HQOQQlqsgA4", t:"Jawani Diwani", y:1972, ind:"bollywood", g:["Romance", "Comedy"], dur:"1h 59m", rating:"", src:"Shemaroo Movies", dir:"Narendra Bedi", cast:"Randhir Kapoor, Jaya Bhaduri, Balraj Sahni", lang:"Hindi", desc:"A college romance between a prankster and a minister's daughter, fought over by disapproving elders. R.D. Burman's soundtrack — 'Jaane Jaan Dhoondta Phir Raha' — made it a youth anthem."},
+ {id:"Qg5JNPPeDa0", t:"Black Mail", y:1973, ind:"bollywood", g:["Thriller", "Drama"], dur:"2h 20m", rating:"", src:"Shemaroo Movies", dir:"Vijay Anand", cast:"Dharmendra, Rakhee, Shatrughan Sinha", lang:"Hindi", desc:"A jealous husband plants a hidden camera to spy on his wife — and the blackmail plot that follows turns his own trap on him. A sleek Vijay Anand thriller in the Hitchcock mould."},
+ {id:"byQZ_JdHdrI", t:"Majboor", y:1974, ind:"bollywood", g:["Thriller", "Drama"], dur:"2h 32m", rating:"7.1", src:"Shemaroo Movies", dir:"Ravi Tandon", cast:"Amitabh Bachchan, Parveen Babi, Pran", lang:"Hindi", desc:"Believing he is dying, a terminally ill man confesses to a murder he didn't commit so his family gets the reward — then survives the operation and must clear his own name. A Bachchan thriller in the Hitchcock vein."},
+ {id:"IY2ASn4_S2Q", t:"Dream Girl", y:1977, ind:"bollywood", g:["Comedy", "Romance"], dur:"2h 38m", rating:"", src:"Shemaroo Movies", dir:"Pramod Chakravorty", cast:"Dharmendra, Hema Malini, Ashok Kumar", lang:"Hindi", desc:"An orphan girl performs five different roles to raise money for the children she shelters — and a young lawyer falls for one of her disguises. The film that cemented Hema Malini as Bollywood's Dream Girl."},
+ {id:"WNhrdRC2PBU", t:"Manzil", y:1979, ind:"bollywood", g:["Drama", "Romance"], dur:"1h 58m", rating:"", src:"Shemaroo Movies", dir:"Basu Chatterjee", cast:"Amitabh Bachchan, Moushumi Chatterjee", lang:"Hindi", desc:"An ambitious young man from a poor family cuts corners to look rich for the girl he loves — until a fraud case puts him in the dock. A rare small-scale Bachchan drama from Basu Chatterjee."},
+ {id:"7PvJjaL8v58", t:"Shalimar", y:1978, ind:"bollywood", g:["Action", "Thriller"], dur:"2h 27m", rating:"", src:"NH Studioz", dir:"Krishna Shah", cast:"Dharmendra, Zeenat Aman, Shammi Kapoor, Rex Harrison", lang:"Hindi", desc:"A retired smuggler invites the world's best thieves to his island to steal the priceless Shalimar ruby — with a fortune for whoever succeeds. Bollywood's most international 70s production, with Rex Harrison and John Saxon."},
+ {id:"jqLOplcfoUw", t:"Swarg Narak", y:1978, ind:"bollywood", g:["Drama", "Romance"], dur:"2h 30m", rating:"", src:"NH Studioz", dir:"Dasari Narayana Rao", cast:"Sanjeev Kumar, Jeetendra, Vinod Mehra, Moushumi Chatterjee", lang:"Hindi", desc:"Two couples — one marriage a heaven, one a hell — live side by side, and the unhappy wife's friendship with a poet neighbour ignites scandal. A hit domestic drama about what makes marriages work."},
+ {id:"qhe8uAm_kQM", t:"Inkaar", y:1977, ind:"bollywood", g:["Thriller", "Action"], dur:"2h 10m", rating:"", src:"NH Studioz", dir:"Raj N. Sippy", cast:"Vinod Khanna, Vidya Sinha, Amjad Khan", lang:"Hindi", desc:"A police officer races to rescue a kidnapped child while the ransom trail leads into his own circle. A tight, song-light crime thriller that was remade decades later as Ugly."},
+ {id:"S814NX5NKdg", t:"Aatish", y:1979, ind:"bollywood", g:["Action", "Drama"], dur:"2h 23m", rating:"", src:"Shemaroo Movies", dir:"Ambrish Sangal", cast:"Jeetendra, Neetu Singh, Nirupa Roy", lang:"Hindi", desc:"Raised by a dacoit after being separated from his family, a young man becomes an outlaw with a price on his head — and a past that keeps catching up. A rugged late-70s action drama."},
+ {id:"iadGEZk7MIc", t:"Anita", y:1967, ind:"bollywood", g:["Thriller", "Romance"], dur:"2h 17m", rating:"", src:"Shemaroo Movies", dir:"Raj Khosla", cast:"Manoj Kumar, Sadhana, I. S. Johar", lang:"Hindi", desc:"A man engaged to a rich girl can't forget Anita, who died by suicide — or did she? A man keeps seeing her everywhere. A stylish Raj Khosla suspense thriller with Sadhana at her most mysterious."},
+ {id:"Fboj42ibzyQ", t:"Amir Garib", y:1974, ind:"bollywood", g:["Action", "Comedy"], dur:"2h 28m", rating:"", src:"Shemaroo Movies", dir:"Mohan Kumar", cast:"Dev Anand, Hema Malini, Prem Nath", lang:"Hindi", desc:"A modern-day Robin Hood in a magician's disguise steals from a crooked millionaire to help the poor — while romancing the millionaire's daughter. Dev Anand and Hema Malini in a breezy caper."},
+ {id:"QQlkQvHZGXQ", t:"Meera", y:1979, ind:"bollywood", g:["Drama"], dur:"2h 20m", rating:"", src:"Shemaroo Movies", dir:"Gulzar", cast:"Hema Malini, Vinod Khanna", lang:"Hindi", desc:"The Rajput princess who gave up a throne to wander as a devotee of Krishna, singing her way out of every court that tried to cage her. Gulzar's telling of the saint-poet's life, with Vani Jairam's bhajans."},
+ {id:"zV00ylxcwXw", t:"The Cabinet of Dr. Caligari", y:1920, ind:"hollywood", dl:"https://archive.org/download/the-cabinet-of-dr-caligari-1920-bluray-2160p-dts-hd-ma-2.0-x265-gazprom/The%20Cabinet%20of%20Dr.%20Caligari%20%281920%29%20-%20%5BBLURAY-2160P%5D%5BDTS-HD%20MA%202.0%5D%5BX265%5D-GAZPROM.mp4", dlsz:"450 MB", g:["Horror", "Thriller"], dur:"1h 15m", rating:"8.0", src:"Cult Cinema Classics", dir:"Robert Wiene", cast:"Werner Krauss, Conrad Veidt", lang:"Silent", trend:1, desc:"At a carnival, the sinister Dr. Caligari exhibits a sleepwalker who predicts a murder — which then happens. The founding nightmare of German Expressionism, shot inside painted, twisted sets."},
+ {id:"dn9EIt39WDA", t:"Battleship Potemkin", y:1925, ind:"hollywood", dl:"https://archive.org/download/battleship-potemkin-1925-tmdb643/Battleship%20Potemkin%20%281925%29.mp4", dlsz:"1.15 GB", g:["Drama", "Action"], dur:"1h 07m", rating:"8.0", src:"Cult Cinema Classics", dir:"Sergei Eisenstein", cast:"Aleksandr Antonov, Vladimir Barsky", lang:"Silent", desc:"The 1905 mutiny of a Russian battleship's crew, told in five acts — including the Odessa Steps massacre that changed film editing forever. Eisenstein's silent landmark, still taught in every film school on Earth."},
+ {id:"eu0MxIWwIjc", t:"Steamboat Bill, Jr.", y:1928, ind:"hollywood", dl:"https://archive.org/download/steamboat-bill-jr.-1928_202505/Steamboat%20Bill%2C%20Jr.%20%281928%29.mp4", dlsz:"410 MB", g:["Comedy", "Action"], dur:"1h 10m", rating:"7.8", src:"Cult Cinema Classics", dir:"Charles Reisner", cast:"Buster Keaton, Ernest Torrence", lang:"Silent", desc:"A delicate college boy joins his riverboat-captain father's feud with a rival magnate — then a cyclone hits, and Keaton performs the most dangerous stunts of his career in real wind. His last great silent."},
+ {id:"FUrUELGDEoY", t:"The Front Page", y:1931, ind:"hollywood", dl:"https://archive.org/download/front-page-1931-pat-obrien/Front%20Page%201931.mp4", dlsz:"483 MB", g:["Comedy", "Drama"], dur:"1h 40m", rating:"6.8", src:"PizzaFlix", dir:"Lewis Milestone", cast:"Adolph Menjou, Pat O'Brien, Mary Brian", lang:"English", desc:"A star reporter tries to quit the newspaper game for marriage, but his editor — and an escaped murderer hiding in a roll-top desk — have other plans. The first screen version of the great newspaper comedy."},
+ {id:"G_4rHTJfEwM", t:"A Farewell to Arms", y:1932, ind:"hollywood", dl:"https://archive.org/download/a.-farewell.to.-arms.-1932.1080p.-blu-ray.-h-264.-aac-rarbg/A.Farewell.to.Arms.1932.1080p.BluRay.H264.AAC-RARBG.ia.mp4", dlsz:"1.69 GB", g:["Romance", "Drama"], dur:"1h 29m", rating:"7.3", src:"PizzaFlix", dir:"Frank Borzage", cast:"Gary Cooper, Helen Hayes, Adolphe Menjou", lang:"English", desc:"An American ambulance driver and an English nurse fall in love on the Italian front in WWI, as the war closes in on them from every side. The first great screen version of Hemingway's novel."},
+ {id:"Ehf-0-pA4OM", t:"The Most Dangerous Game", y:1932, ind:"hollywood", dl:"https://archive.org/download/the.most.dangerous.game.1932.1080p/the.most.dangerous.game.1932.1080p.bluray.x264-bipolar.mp4", dlsz:"371 MB", g:["Thriller", "Horror"], dur:"1h 04m", rating:"7.1", src:"PizzaFlix", dir:"Irving Pichel & Ernest B. Schoedsack", cast:"Joel McCrea, Fay Wray, Leslie Banks", lang:"English", desc:"A shipwrecked hunter washes up on an island where a bored Russian count has graduated from big game to hunting men. Made by the King Kong team on Kong's own jungle sets — 63 minutes of pure chase."},
+ {id:"LN6bPy5JDhI", t:"White Zombie", y:1932, ind:"hollywood", dl:"https://archive.org/download/White_Zombie_ACM/White_Zombie.mp4", dlsz:"680 MB", g:["Horror"], dur:"1h 07m", rating:"6.3", src:"Cult Cinema Classics", dir:"Victor Halperin", cast:"Bela Lugosi, Madge Bellamy", lang:"English", desc:"On a Haitian plantation, a spurned suitor asks the witch doctor 'Murder' Legendre to turn the woman he loves into a zombie bride. The first zombie feature ever made — Lugosi's eyes do most of the haunting."},
+ {id:"O4MOU5YRc7c", t:"Bird of Paradise", y:1932, ind:"hollywood", dl:"https://archive.org/download/bird-of-paradise-1932/Bird%20of%20Paradise%20%281932%29.ia.mp4", dlsz:"1.58 GB", g:["Romance", "Drama"], dur:"1h 22m", rating:"6.1", src:"PizzaFlix", dir:"King Vidor", cast:"Dolores del Río, Joel McCrea", lang:"English", desc:"A sailor jumps ship on a South Seas island, falls for the chief's daughter — who is promised as a sacrifice to the volcano god. Pre-Code exotic spectacle with a finale inside an erupting volcano."},
+ {id:"JQ6H4UxIqPM", t:"A Study in Scarlet", y:1933, ind:"hollywood", dl:"https://archive.org/download/A_Study_In_Scarlet/A_Study_In_Scarlet.mp4", dlsz:"425 MB", g:["Thriller"], dur:"1h 12m", rating:"", src:"FEATURE FILM", dir:"Edwin L. Marin", cast:"Reginald Owen, Anna May Wong", lang:"English", desc:"A secret society of rich men is being murdered one by one, each death announced by a nursery-rhyme verse — and Sherlock Holmes follows the money. Reginald Owen as Holmes, with Anna May Wong."},
+ {id:"OX_-4yABrc4", t:"Scrooge", y:1935, ind:"hollywood", dl:"https://archive.org/download/scrooge-1935_202504/Scrooge%20%281935%29.mp4", dlsz:"388 MB", g:["Drama"], dur:"1h 18m", rating:"", src:"Cult Cinema Classics", dir:"Henry Edwards", cast:"Seymour Hicks, Donald Calthrop", lang:"English", desc:"Ebenezer Scrooge gets his three ghostly visitors in the earliest surviving sound version of Dickens' tale, adapted from the stage play Hicks had performed for decades."},
+ {id:"KasPpKBtmi8", t:"The Triumph of Sherlock Holmes", y:1935, ind:"hollywood", dl:"https://archive.org/download/TriumphOfSherlockHolmes720p1935/TriumphOfSherlockHolmes1935_720p.mp4", dlsz:"466 MB", g:["Thriller"], dur:"1h 23m", rating:"", src:"Cult Cinema Classics", dir:"Leslie S. Hiscott", cast:"Arthur Wontner, Ian Fleming", lang:"English", desc:"Holmes retires to keep bees, but a murdered American millionaire and a coded message about 'the Valley of Fear' pull him back. Arthur Wontner's fourth outing as the screen's most gentlemanly Holmes."},
+ {id:"iwTDqHrJ4vc", t:"Things to Come", y:1936, ind:"hollywood", dl:"https://archive.org/download/ThingsToCome_835/ThingsToComePresentedByMoviePowder.mp4", dlsz:"552 MB", g:["Drama"], dur:"1h 33m", rating:"6.6", src:"Cult Cinema Classics", dir:"William Cameron Menzies", cast:"Raymond Massey, Ralph Richardson", lang:"English", desc:"A century of war, plague, technocracy and the first flight to the Moon, as H.G. Wells imagined the future in 1936. British sci-fi's grand statement — its art-deco space age still looks like tomorrow."},
+ {id:"fcz8z7ensRM", t:"My Man Godfrey", y:1936, ind:"hollywood", dl:"https://archive.org/download/my-man-godfrey-1936-criterion-bluray.-1080p.-dts/My%20Man%20Godfrey%20%281936%29%20Criterion%20Bluray.1080p.DTS.mp4", dlsz:"520 MB", g:["Comedy", "Romance"], dur:"1h 33m", rating:"8.0", src:"PizzaFlix", dir:"Gregory La Cava", cast:"William Powell, Carole Lombard", lang:"English", desc:"A dizzy heiress hires a 'forgotten man' from the city dump as the family butler — and he turns out to be better bred than all of them. The screwball comedy at its most perfect: witty, warm and quietly furious about the Depression."},
+ {id:"8kg0sK-dY98", t:"Reefer Madness", y:1936, ind:"hollywood", dl:"https://archive.org/download/reefer_madness_ipod/reefer_madness1938.mp4", dlsz:"405 MB", g:["Drama"], dur:"1h 06m", rating:"3.8", src:"Cult Cinema Classics", dir:"Louis J. Gasnier", cast:"Dorothy Short, Kenneth Craig", lang:"English", desc:"Clean-cut high school kids are lured into marijuana dens and descend into mania, murder and madness — exactly as the posters promised. The 1936 scare film that became the most famous accidental comedy in cinema."},
+ {id:"425yT-mqbkw", t:"A Star Is Born", y:1937, ind:"hollywood", dl:"https://archive.org/download/a-star-is-born-1937/A%20Star%20is%20Born%20%281937%29.mp4", dlsz:"619 MB", g:["Romance", "Drama"], dur:"1h 51m", rating:"7.9", src:"Cult Cinema Classics", dir:"William A. Wellman", cast:"Janet Gaynor, Fredric March", lang:"English", desc:"A small-town girl becomes a Hollywood star while the leading man who launched her drowns in drink and decline. The 1937 original of the most-remade story in cinema — the only version in colour from the golden age."},
+ {id:"ooez5dAnddo", t:"Nothing Sacred", y:1937, ind:"hollywood", dl:"https://archive.org/download/nothing-sacred-1937-by-william-a.-wellman/Nothing.Sacred.1937.1080p.BluRay.x264-%5BYTS.AM%5D.mp4", dlsz:"1.17 GB", g:["Comedy", "Romance"], dur:"1h 14m", rating:"7.0", src:"Cult Cinema Classics", dir:"William A. Wellman", cast:"Carole Lombard, Fredric March", lang:"English", desc:"A small-town girl faking a fatal illness becomes New York's beloved tragic heroine, and the reporter who exposes the hoax falls for her instead. Screwball at its most cynical and sparkling — Lombard again, unbeatable."},
+ {id:"-6lNFsLTVZk", t:"The Lady Vanishes", y:1938, ind:"hollywood", dl:"https://archive.org/download/the-lady-vanishes-1938-alfred-hitchcock/The%20Lady%20Vanishes%20%281938%29%20Alfred%20Hitchcock.ia.mp4", dlsz:"1.80 GB", g:["Thriller", "Comedy"], dur:"1h 35m", rating:"7.8", src:"Cult Cinema Classics", dir:"Alfred Hitchcock", cast:"Margaret Lockwood, Michael Redgrave, Dame May Whitty", lang:"English", trend:1, desc:"On a train through Europe, a young woman befriends a kindly old governess — who then vanishes, while every other passenger denies she ever existed. Hitchcock's wittiest thriller and his ticket to Hollywood."},
+ {id:"hnh4zJ5EZss", t:"Gulliver's Travels", y:1939, ind:"hollywood", dl:"https://archive.org/download/GulliversTravels720p1939/GulliversTravels720p1939.mp4", dlsz:"734 MB", g:["Comedy", "Romance"], dur:"1h 16m", rating:"6.6", src:"PizzaFlix", dir:"Dave Fleischer", cast:"Voices of Sam Parker, Pinto Colvig", lang:"English", desc:"Shipwrecked Gulliver washes up in Lilliput and becomes the tiny kingdom's giant peacemaker. The Fleischer studio's answer to Snow White — only the second American animated feature ever made."},
+ {id:"4ahFtCNoa5E", t:"The Devil Bat", y:1940, ind:"hollywood", dl:"https://archive.org/download/thedevilbat/videoplayback.mp4", dlsz:"202 MB", g:["Horror"], dur:"1h 08m", rating:"5.4", src:"PizzaFlix", dir:"Jean Yarbrough", cast:"Bela Lugosi, Dave O'Brien", lang:"English", desc:"A bitter chemist breeds giant bats and trains them to kill anyone wearing his new aftershave — namely, the cosmetics bosses who cheated him. Bela Lugosi's Poverty Row revenge, and a mad-science gem."},
+ {id:"flmdGgUtkCU", t:"Meet John Doe", y:1941, ind:"hollywood", dl:"https://archive.org/download/meet-john-doe-1941-1080p-hdtv-x-265-r00t/Meet%20John%20Doe%20%281941%29%20%281080p%20HDTV%20x265%20r00t%29.mp4", dlsz:"686 MB", g:["Drama", "Romance"], dur:"2h 02m", rating:"7.6", src:"PizzaFlix", dir:"Frank Capra", cast:"Gary Cooper, Barbara Stanwyck", lang:"English", desc:"A newspaper invents a suicidal 'John Doe' letter to boost sales, hires a homeless ex-ballplayer to play him — and accidentally starts a national movement. Capra's darkest fable about media and the common man."},
+ {id:"v6x8R1kbhr8", t:"The Outlaw", y:1943, ind:"hollywood", dl:"https://archive.org/download/the-outlaw-1943_202406/The%20Outlaw%201943.mp4", dlsz:"559 MB", g:["Action", "Romance"], dur:"1h 56m", rating:"5.4", src:"FEATURE FILM", dir:"Howard Hughes", cast:"Jane Russell, Jack Buetel, Walter Huston", lang:"English", desc:"Billy the Kid, Doc Holliday and Pat Garrett fight over a horse, a girl and each other in Howard Hughes' scandal western — held from release for years by censors obsessed with Jane Russell's debut."},
+ {id:"9srGe68u4qQ", t:"Scarlet Street", y:1945, ind:"hollywood", dl:"https://archive.org/download/scarlet-street-1945-by-fritz-lang/Scarlet.Street.1945.1080p.BluRay.x264.AAC-%5BYTS.MX%5D.mp4", dlsz:"1.70 GB", g:["Thriller", "Drama"], dur:"1h 42m", rating:"7.8", src:"Cult Cinema Classics", dir:"Fritz Lang", cast:"Edward G. Robinson, Joan Bennett, Dan Duryea", lang:"English", desc:"A henpecked cashier-painter falls for a streetwise girl whose boyfriend sells the old man's canvases as her work — until the humiliation turns murderous. Fritz Lang's cruelest noir, banned in New York on release."},
+ {id:"Tp58gGBPkx8", t:"Angel on My Shoulder", y:1946, ind:"hollywood", dl:"https://archive.org/download/angel_on_my_shoulder/angel_on_my_shoulder.mp4", dlsz:"604 MB", g:["Drama"], dur:"1h 41m", rating:"7.0", src:"FEATURE FILM", dir:"Archie Mayo", cast:"Paul Muni, Claude Rains, Anne Baxter", lang:"English", desc:"A murdered gangster makes a deal with the Devil: return to Earth in a saintly judge's body and ruin the man's reputation. Claude Rains plays Satan as a smooth civil servant — and steals the picture."},
+ {id:"7BWzFbfU648", t:"Angel and the Badman", y:1947, ind:"hollywood", dl:"https://archive.org/download/angel_and_the_badman_iPod/angel_and_the_badman.mp4", dlsz:"396 MB", g:["Romance", "Action"], dur:"1h 40m", rating:"7.0", src:"FEATURE FILM", dir:"James Edward Grant", cast:"John Wayne, Gail Russell", lang:"English", desc:"A wounded gunfighter is nursed back to health by a Quaker family and must choose between the girl who saved him and the men coming to kill him. John Wayne's first film as producer."},
+ {id:"jc3Vrz4OnY4", t:"Life with Father", y:1947, ind:"hollywood", dl:"https://archive.org/download/LifeWithFather1947_201808/Life%20with%20Father%20%281947%29.mp4", dlsz:"921 MB", g:["Comedy"], dur:"1h 58m", rating:"7.2", src:"Cult Cinema Classics", dir:"Michael Curtiz", cast:"William Powell, Irene Dunne", lang:"English", desc:"A blustering Wall Street banker rules his 1880s New York household like a corporation — except his wife runs everything that matters. One of the biggest hits of the 1940s, from the long-running Broadway play."},
+ {id:"EZ8_szn0CrM", t:"He Walked by Night", y:1948, ind:"hollywood", dl:"https://archive.org/download/1948-he-walked-by-night-orden-caza-sin-cuartel-alfred-l.-werker-anthony-mann-vose/1948%20-%20He%20Walked%20By%20Night%20-%20Orden%20caza%20sin%20cuartel%20-%20Alfred%20L.%20Werker%20-%20Anthony%20Mann%20-%20VOSE.mp4", dlsz:"353 MB", g:["Thriller", "Action"], dur:"1h 19m", rating:"7.0", src:"Cult Cinema Classics", dir:"Alfred L. Werker", cast:"Richard Basehart, Scott Brady", lang:"English", desc:"A cool, methodical burglar kills a policeman and vanishes into Los Angeles' storm drains, pursued by a dragnet built from pure procedure. The semi-documentary noir that invented the police procedural style — shot by John Alton."},
+ {id:"P_lVVgrtePM", t:"Impact", y:1949, ind:"hollywood", dl:"https://archive.org/download/impact_201710/videoplayback.mp4", dlsz:"279 MB", g:["Thriller", "Drama"], dur:"1h 51m", rating:"7.0", src:"Cult Cinema Classics", dir:"Arthur Lubin", cast:"Brian Donlevy, Ella Raines", lang:"English", desc:"A rich man's wife and her lover stage a car 'accident' to kill him; he survives, lets the world think him dead, and waits. A noir about a man legally deceased and morally reborn."},
+ {id:"18WSTwGwIZ8", t:"The Inspector General", y:1949, ind:"hollywood", dl:"https://archive.org/download/the-inspector-general-1949-danny-kaye/The%20Inspector%20General%20%281949%29%20-%20Danny%20Kaye.mp4", dlsz:"373 MB", g:["Comedy", "Romance"], dur:"1h 49m", rating:"6.7", src:"PizzaFlix", dir:"Henry Koster", cast:"Danny Kaye, Walter Slezak", lang:"English", desc:"A penniless quack-medicine drummer is mistaken for the Tsar's dreaded Inspector General in a town run by thieves — and the bribes start flowing. Danny Kaye at full elastic power, from Gogol's play."},
+ {id:"yI1dIRAUuw4", t:"D.O.A.", y:1950, ind:"hollywood", dl:"https://archive.org/download/doa-1950_202506/DOA%201950.ia.mp4", dlsz:"1.22 GB", g:["Thriller"], dur:"1h 24m", rating:"7.4", src:"PizzaFlix", dir:"Rudolph Maté", cast:"Edmond O'Brien, Pamela Britton", lang:"English", trend:1, desc:"A man walks into a police station to report a murder: his own. Poisoned with a toxin that kills in days, he spends his last hours solving his own killing. The definitive countdown noir."},
+ {id:"3wOSKlRGKEc", t:"Quicksand", y:1950, ind:"hollywood", dl:"https://archive.org/download/quicksand.-1950.-dvdrip.x-264-handjob/Quicksand.1950.DVDRip.x264-HANDJOB.mp4", dlsz:"471 MB", g:["Thriller"], dur:"1h 24m", rating:"6.6", src:"PizzaFlix", dir:"Irving Pichel", cast:"Mickey Rooney, Peter Lorre", lang:"English", desc:"A mechanic borrows twenty dollars from the till for a date and spends the rest of the film sliding from small lie to armed robbery. Mickey Rooney against type, with Peter Lorre running the penny arcade — noir as a trap snapping shut."},
+ {id:"LKY3bhGcIrA", t:"Woman on the Run", y:1950, ind:"hollywood", dl:"https://archive.org/download/woman-on-the-run-1950_202312/Woman%20on%20the%20Run%20%281950%29.ia.mp4", dlsz:"1.49 GB", g:["Thriller"], dur:"1h 17m", rating:"7.2", src:"Cult Cinema Classics", dir:"Norman Foster", cast:"Ann Sheridan, Dennis O'Keefe", lang:"English", desc:"The only witness to a mob murder is her husband — and he's running from both the killer and the police. His wife searches San Francisco for him, with a reporter whose help smells wrong. Noir with a carnival climax."},
+ {id:"u8nRmYj3GTQ", t:"Royal Wedding", y:1951, ind:"hollywood", dl:"https://archive.org/download/royal-wedding-1951-by-stanley-donen/Royal.Wedding.1951.1080p.WEBRip.x264.AAC-%5BYTS.MX%5D.mp4", dlsz:"1.55 GB", g:["Comedy", "Romance"], dur:"1h 33m", rating:"6.7", src:"Cult Cinema Classics", dir:"Stanley Donen", cast:"Fred Astaire, Jane Powell", lang:"English", desc:"A brother-sister dance act takes their show to London for the royal wedding, and both fall in love mid-rehearsal. Contains Astaire's impossible dance on the walls and ceiling of his hotel room."},
+ {id:"3PVDpp1v2dw", t:"Road to Bali", y:1952, ind:"hollywood", dl:"https://archive.org/download/road-to-bali/Road%20to%20Bali.mp4", dlsz:"541 MB", g:["Comedy", "Romance"], dur:"1h 31m", rating:"6.5", src:"Cult Cinema Classics", dir:"Hal Walker", cast:"Bing Crosby, Bob Hope, Dorothy Lamour", lang:"English", desc:"Two unemployed showmen flee Melbourne, dive for sunken treasure and wash up on a South Seas island with a princess and a giant squid. The sixth and penultimate 'Road' picture — the only one in colour."},
+ {id:"pYH270iR3mc", t:"Kansas City Confidential", y:1952, ind:"hollywood", dl:"https://archive.org/download/kansas-city-confidential-1952_202307/Kansas%20City%20Confidential%20%281952%29.mp4", dlsz:"775 MB", g:["Thriller", "Action"], dur:"1h 39m", rating:"7.3", src:"PizzaFlix", dir:"Phil Karlson", cast:"John Payne, Preston Foster, Coleen Gray", lang:"English", desc:"An ex-con delivery driver is framed for a million-dollar armored-car robbery planned by a cop-turned-mastermind who masks his whole crew. Tough, influential heist noir — a favourite of Tarantino."},
+ {id:"Fk5F9fS-Csk", t:"The Hitch-Hiker", y:1953, ind:"hollywood", dl:"https://archive.org/download/the-hitch-hiker-1953-by-ida-lupino/The.Hitch-Hiker.1953.1080p.BluRay.x264-%5BYTS.AG%5D.mp4", dlsz:"1.06 GB", g:["Thriller"], dur:"1h 11m", rating:"6.9", src:"PizzaFlix", dir:"Ida Lupino", cast:"Edmond O'Brien, Frank Lovejoy, William Talman", lang:"English", desc:"Two friends on a fishing trip pick up a hitchhiker who turns out to be a spree killer keeping them alive only as cover. Ida Lupino directs the toughest little noir of the 50s — the first American noir directed by a woman."},
+ {id:"n3VPWmqaOb4", t:"Salt of the Earth", y:1954, ind:"hollywood", dl:"https://archive.org/download/salt-of-the-earth-1954/Salt%20of%20the%20Earth%20%281954%29.ia.mp4", dlsz:"429 MB", g:["Drama"], dur:"1h 34m", rating:"7.4", src:"PizzaFlix", dir:"Herbert J. Biberman", cast:"Rosaura Revueltas, Will Geer", lang:"English", desc:"Mexican-American zinc miners strike for equality while their wives fight for running water — and take over the picket line when the men are banned from it. Made by blacklisted filmmakers and suppressed for years; now a landmark."},
+ {id:"X2hS9dKzVgQ", t:"Suddenly", y:1954, ind:"hollywood", dl:"https://archive.org/download/suddenly/suddenly.mp4", dlsz:"450 MB", g:["Thriller"], dur:"1h 16m", rating:"6.8", src:"PizzaFlix", dir:"Lewis Allen", cast:"Frank Sinatra, Sterling Hayden", lang:"English", desc:"Three hired killers take a small town hostage and set up in a widow's house overlooking the station — because the President's train is coming through. Sinatra, ice-cold, in the role he later tried to bury."},
+ {id:"OITrTnAqWI8", t:"The Big Combo", y:1955, ind:"hollywood", dl:"https://archive.org/download/The_Big_Combo_1955/Big_Combo_1955.mp4", dlsz:"519 MB", g:["Thriller"], dur:"1h 27m", rating:"7.3", src:"Cult Cinema Classics", dir:"Joseph H. Lewis", cast:"Cornel Wilde, Richard Conte, Jean Wallace", lang:"English", desc:"A detective obsessed with destroying an untouchable crime boss crosses every line — legal, professional, romantic — to do it. John Alton's lighting makes this the most beautiful of all film noirs."},
+ {id:"fMovXQn-lng", t:"House on Haunted Hill", y:1959, ind:"hollywood", dl:"https://archive.org/download/house-on-haunted-hill-1959_202312/House%20on%20Haunted%20Hill%20%281959%29.mp4", dlsz:"415 MB", g:["Horror"], dur:"1h 15m", rating:"6.8", src:"PizzaFlix", dir:"William Castle", cast:"Vincent Price, Carol Ohmart", lang:"English", trend:1, desc:"A millionaire offers five strangers $10,000 each to survive one night in a haunted house — with loaded guns in coffin-shaped boxes. Vincent Price and William Castle at their most gleefully macabre."},
+ {id:"uhofnJwL-ZI", t:"The Wasp Woman", y:1959, ind:"hollywood", dl:"https://archive.org/download/the-wasp-woman-1959/The%20Wasp%20Woman%20%281959%29%20Roger%20Corman%20-%20Horror%2C%20Sci-Fi%20Full%20Length%20Movie-JpPAN6frZmU.mp4", dlsz:"282 MB", g:["Horror"], dur:"1h 13m", rating:"4.7", src:"PizzaFlix", dir:"Roger Corman", cast:"Susan Cabot, Fred Eisley", lang:"English", desc:"A cosmetics queen injects herself with wasp-enzyme youth serum and gains a second, murderous, mandibled personality. Roger Corman's beauty-industry horror, and Susan Cabot's signature role."},
+ {id:"cDfYhyhyCVE", t:"The Bat", y:1959, ind:"hollywood", dl:"https://archive.org/download/The_Bat_Vincent_Price/The_Bat.mp4", dlsz:"628 MB", g:["Horror", "Thriller"], dur:"1h 20m", rating:"6.0", src:"Cult Cinema Classics", dir:"Crane Wilbur", cast:"Vincent Price, Agnes Moorehead", lang:"English", desc:"A mystery writer rents a mansion where a faceless killer called The Bat has been clawing victims — and the stolen money is hidden somewhere in the house. Price and Moorehead in a creaky, delightful whodunit."},
+ {id:"u027npyL1n4", t:"The Giant Gila Monster", y:1959, ind:"hollywood", dl:"https://archive.org/download/the-giant-gila-monster-1959/The%20Giant%20Gila%20Monster%20%281959%29.ia.mp4", dlsz:"2.20 GB", g:["Horror"], dur:"1h 16m", rating:"3.7", src:"PizzaFlix", dir:"Ray Kellogg", cast:"Don Sullivan, Fred Graham", lang:"English", desc:"Cars keep vanishing on a Texas highway, and the local sheriff slowly realises the skid marks lead to a lizard the size of a house. A regional drive-in classic with hot rods, rock'n'roll and one very patient gila monster."},
+ {id:"ZaUOd9tStPU", t:"Teenagers from Outer Space", y:1959, ind:"hollywood", dl:"https://archive.org/download/TeenagersFromOuterSpace_1959/TeenagersFromOuterSpace.mp4", dlsz:"505 MB", g:["Horror"], dur:"1h 25m", rating:"3.8", src:"PizzaFlix", dir:"Tom Graeff", cast:"David Love, Dawn Bender", lang:"English", desc:"A teenage alien lands with a ray gun and a conscience, refuses to turn Earth into a grazing planet for giant lobsters, and falls for an Earth girl. Budget: almost nothing. Charm: enormous."},
+ {id:"VExYD_p-Fo8", t:"Last Woman on Earth", y:1960, ind:"hollywood", dl:"https://archive.org/download/last-woman-on-earth-1960_202402/Last%20Woman%20on%20Earth%20%281960%29.mp4", dlsz:"362 MB", g:["Horror", "Drama"], dur:"1h 04m", rating:"4.7", src:"FEATURE FILM", dir:"Roger Corman", cast:"Betsy Jones-Moreland, Antony Carbone", lang:"English", desc:"Three people surface from a scuba dive to find every trace of oxygen — and every other living person — gone. Roger Corman's end-of-the-world triangle, written by Robert Towne."},
+ {id:"MTkOud2MBso", t:"The Phantom Planet", y:1961, ind:"hollywood", dl:"https://archive.org/download/PlanetaFantasma/The_Phantom_Planet_1961.mp4", dlsz:"215 MB", g:["Action"], dur:"1h 22m", rating:"3.9", src:"Cult Cinema Classics", dir:"William Marshall", cast:"Dean Fredericks, Coleen Gray", lang:"English", desc:"An astronaut crashes on an asteroid whose tiny inhabitants shrink him to their size and enlist him against their enemies. Earnest, oddball space opera with some of the strangest aliens of the 60s."},
+ {id:"k3xqi4Vu63o", t:"Creature from the Haunted Sea", y:1961, ind:"hollywood", dl:"https://archive.org/download/CreatureFromTheHauntedSea/CreatureFromTheHauntedSea.mp4", dlsz:"444 MB", g:["Horror", "Comedy"], dur:"1h 01m", rating:"3.4", src:"PizzaFlix", dir:"Roger Corman", cast:"Antony Carbone, Betsy Jones-Moreland", lang:"English", desc:"A mobster invents a sea monster to cover his murders while smuggling gold out of Cuba — then a real monster shows up for dinner. Roger Corman's fastest, funniest creature quickie."},
+ {id:"vNYg4YWkp0k", t:"Carnival of Souls", y:1962, ind:"hollywood", dl:"https://archive.org/download/CarnivalofSouls/CarnivalOfSouls.mp4", dlsz:"494 MB", g:["Horror"], dur:"1h 18m", rating:"7.1", src:"Cult Cinema Classics", dir:"Herk Harvey", cast:"Candace Hilligoss, Frances Feist", lang:"English", desc:"A church organist survives a car crash and takes a job in Utah — but a pale stranger keeps appearing, and the living barely seem to see her. A one-off indie nightmare that quietly invented modern psychological horror."},
+ {id:"q0dcplF29Qc", t:"The Brain That Wouldn't Die", y:1962, ind:"hollywood", dl:"https://archive.org/download/brain-that-wouldnt-die/Brain%20That%20Wouldn%27t%20Die.mp4", dlsz:"140 MB", g:["Horror"], dur:"1h 23m", rating:"4.6", src:"Cult Cinema Classics", dir:"Joseph Green", cast:"Jason Evers, Virginia Leith", lang:"English", desc:"A transplant surgeon keeps his fiancée's severed head alive in a tray while hunting for a new body to steal for it. Sleazy, sincere, immortal — the head in the pan is horror's most quoted image of mad science on a budget."},
+ {id:"tbkz6yUOh0k", t:"Eegah", y:1962, ind:"hollywood", dl:"https://archive.org/download/eegah-1962_202405/Eegah%201962.mp4", dlsz:"926 MB", g:["Horror"], dur:"1h 31m", rating:"2.3", src:"Cult Cinema Classics", dir:"Arch Hall Sr.", cast:"Arch Hall Jr., Marilyn Manning, Richard Kiel", lang:"English", desc:"A teenage girl swears she nearly ran over a giant on a desert road — her father goes looking and finds a Stone Age caveman, played by a young Richard Kiel. Drive-in legend, glorious nonsense."},
+ {id:"EvjYwBGgqj4", t:"Dementia 13", y:1963, ind:"hollywood", dl:"https://archive.org/download/dementia.-13.1963/Dementia%2013%20%281963%29/mp4/Dementia.13.1963.mp4", dlsz:"1.27 GB", g:["Horror", "Thriller"], dur:"1h 15m", rating:"5.7", src:"Cult Cinema Classics", dir:"Francis Ford Coppola", cast:"William Campbell, Luana Anders", lang:"English", desc:"A scheming widow hides her husband's death to secure his inheritance at an Irish castle where an axe killer is working through the family. Francis Ford Coppola's first feature, made for Roger Corman in nine days."},
+ {id:"RVjnuiaEuGA", t:"The Terror", y:1963, ind:"hollywood", dl:"https://archive.org/download/the-terror-1963_202505/The%20Terror%20%281963%29.mp4", dlsz:"470 MB", g:["Horror"], dur:"1h 20m", rating:"5.0", src:"PizzaFlix", dir:"Roger Corman", cast:"Boris Karloff, Jack Nicholson", lang:"English", desc:"A Napoleonic officer follows a beautiful stranger to a crumbling castle where Baron von Leppe hides a twenty-year-old secret. Shot by Coppola, Monte Hellman and Jack Hill on leftover sets — with a pre-fame Jack Nicholson."},
+ {id:"x0VNbS5NYS4", t:"McLintock!", y:1963, ind:"hollywood", dl:"https://archive.org/download/mclintock-producers-cut-1963-4k/McLintock.Producers.Cut.1963.2160p.PMTP.WEB-DL.DDP5.1.x265-SMURF.mp4", dlsz:"712 MB", g:["Comedy", "Romance", "Action"], dur:"2h 07m", rating:"7.2", src:"Cult Cinema Classics", dir:"Andrew V. McLaglen", cast:"John Wayne, Maureen O'Hara", lang:"English", desc:"A cattle baron's estranged wife storms back to town demanding divorce and their daughter, and the whole territory picks sides. Wayne and O'Hara's comic brawls made this the most beloved of their five films together."},
+ {id:"Vv2WUewBx8U", t:"The Last Man on Earth", y:1964, ind:"hollywood", dl:"https://archive.org/download/the-last-man-on-earth-1964./The%20Last%20Man%20on%20Earth%201964..mp4", dlsz:"1.23 GB", g:["Horror", "Drama"], dur:"1h 27m", rating:"6.8", src:"Cult Cinema Classics", dir:"Ubaldo Ragona & Sidney Salkow", cast:"Vincent Price", lang:"English", desc:"Three years after a plague turned humanity into shambling vampires, one immune man spends his days hunting them and his nights barricaded at home. The first adaptation of I Am Legend — the film that directly inspired Night of the Living Dead."},
+ {id:"uxP1moQN0aA", t:"Santa Claus Conquers the Martians", y:1964, ind:"hollywood", dl:"https://archive.org/download/santa-claus-conquers-the-martians_202512/Watch%20Santa%20Claus%20Conquers%20the%20Martians%201964.ia.mp4", dlsz:"604 MB", g:["Comedy"], dur:"1h 21m", rating:"2.7", src:"PizzaFlix", dir:"Nicholas Webster", cast:"John Call, Leonard Hicks, Pia Zadora", lang:"English", desc:"Martian elders kidnap Santa Claus (and two Earth kids) because Martian children have become bored and joyless. A tiny Pia Zadora, a robot made of boxes, and the most beloved bad Christmas movie ever made."},
+ {id:"Dh8bAR__FNU", t:"Sagebrush Trail", y:1933, ind:"hollywood", dl:"https://archive.org/download/sagebrush-trail-pnm/Sagebrush%20Trail%20%281933%29%20John%20Wayne%20Classic%20Western%20Movie%20%281080p_25fps_H264-128kbit_AAC%29.ia.mp4", dlsz:"929 MB", g:["Action"], dur:"0h 54m", rating:"5.4", src:"Cult Cinema Classics", dir:"Armand Schaefer", cast:"John Wayne, Nancy Shubert", lang:"English", desc:"Wrongly jailed for murder, a cowboy escapes, joins the real killers' gang undercover, and falls for the storekeeper's daughter. One of the strongest of Wayne's 1930s Lone Star westerns."},
+ {id:"jWuSafp8b9w", t:"The Star Packer", y:1934, ind:"hollywood", dl:"https://archive.org/download/1934-the-star-packer/1934%20-%20The%20Star%20Packer.mp4", dlsz:"345 MB", g:["Action"], dur:"0h 55m", rating:"5.3", src:"Cult Cinema Classics", dir:"Robert N. Bradbury", cast:"John Wayne, Verna Hillie, Gabby Hayes", lang:"English", desc:"A U.S. Marshal and his sidekick ride into a town controlled by a shadowy outlaw chief whose gang robs every stage. Wayne undercover in one of the series' better entries."},
+ {id:"D5-XzcsOij4", t:"The Man from Utah", y:1934, ind:"hollywood", dl:"https://archive.org/download/the-man-from-utah-1934_202505/The%20Man%20from%20Utah%20%281934%29.mp4", dlsz:"307 MB", g:["Action"], dur:"0h 51m", rating:"5.1", src:"Cult Cinema Classics", dir:"Robert N. Bradbury", cast:"John Wayne, Polly Ann Young, Gabby Hayes", lang:"English", desc:"A singing cowboy enters a rodeo whose organiser is murdering the winning riders to collect on side bets. Wayne investigates between songs in this Lone Star mystery-western."},
+ {id:"2LiVnDZbO-E", t:"Blue Steel", y:1934, ind:"hollywood", dl:"https://archive.org/download/blue-steel-1934/Blue%20Steel%20%281934%29.mp4", dlsz:"323 MB", g:["Action"], dur:"0h 51m", rating:"5.4", src:"Cult Cinema Classics", dir:"Robert N. Bradbury", cast:"John Wayne, Eleanor Hunt, George 'Gabby' Hayes", lang:"English", desc:"A U.S. Marshal goes undercover in a town where a bandit gang is starving the settlers to force them off gold-rich land. One of the best of John Wayne's Lone Star westerns."},
+ {id:"4PTADOuzv9M", t:"Randy Rides Alone", y:1934, ind:"hollywood", dl:"https://archive.org/download/1934-randy-rides-alone/1934%20-%20Randy%20Rides%20Alone.mp4", dlsz:"150 MB", g:["Action"], dur:"0h 52m", rating:"5.4", src:"Cult Cinema Classics", dir:"Harry L. Fraser", cast:"John Wayne, Alberta Vaughn", lang:"English", desc:"A cowboy jailed for murders he didn't commit escapes to hunt the real killers — a gang using a blind man's store as their front. Wayne at his most laconic in the Lone Star series."},
+ {id:"IbkrTFerGvk", t:"The Lucky Texan", y:1934, ind:"hollywood", dl:"https://archive.org/download/the-lucky-texan-1934_202505/The%20Lucky%20Texan%20%281934%29.mp4", dlsz:"324 MB", g:["Action"], dur:"0h 54m", rating:"5.4", src:"Cult Cinema Classics", dir:"Robert N. Bradbury", cast:"John Wayne, Barbara Sheldon, Gabby Hayes", lang:"English", desc:"Two partners strike gold, one is murdered and framed on the other, and a disguised grandmother keeps the ranch running. Wayne, comic cross-dressing, and a gold rush plot in 56 tight minutes."},
+ {id:"VF0yHHdICW4", t:"West of the Divide", y:1934, ind:"hollywood", dl:"https://archive.org/download/west-of-the-divide-pnm/west_of_the_divide.mp4", dlsz:"296 MB", g:["Action"], dur:"0h 53m", rating:"5.2", src:"Cult Cinema Classics", dir:"Robert N. Bradbury", cast:"John Wayne, Virginia Brown Faire", lang:"English", desc:"A drifter joins the gang of the man who killed his father, searching for his lost little brother along the way. One of the more emotional of Wayne's Lone Star westerns."},
+ {id:"NES6U56kCYI", t:"The Lawless Frontier", y:1934, ind:"hollywood", dl:"https://archive.org/download/the-lawless-frontier-1934_202505/The%20Lawless%20Frontier%20%281934%29.mp4", dlsz:"295 MB", g:["Action"], dur:"0h 50m", rating:"5.1", src:"Cult Cinema Classics", dir:"Robert N. Bradbury", cast:"John Wayne, Sheila Bromley, Gabby Hayes", lang:"English", desc:"A drifter hunting his parents' killer is himself framed by the outlaw he's chasing. Wayne and a very young Gabby Hayes in a fast Lone Star western."},
+ {id:"6yxN47XYQSI", t:"Paradise Canyon", y:1935, ind:"hollywood", dl:"https://archive.org/download/ParadiseCanyon/ParadiseCanyon.mp4", dlsz:"315 MB", g:["Action"], dur:"0h 53m", rating:"5.1", src:"Cult Cinema Classics", dir:"Carl Pierson", cast:"John Wayne, Marion Burns", lang:"English", desc:"A government agent goes undercover with a travelling medicine show to catch the counterfeiters who framed his partner. Wayne's last Lone Star western — the end of the run that made him."},
+ {id:"HEWMJNG3Lwc", t:"At War with the Army", y:1950, ind:"hollywood", dl:"https://archive.org/download/at.-war.with.the.-army.-1950.720p.-blu-ray.x-264/At%20War%20With%20The%20Army%20%281950%29.ia.mp4", dlsz:"1.63 GB", g:["Comedy"], dur:"1h 33m", rating:"6.5", src:"PizzaFlix", dir:"Hal Walker", cast:"Dean Martin, Jerry Lewis", lang:"English", desc:"Two buddies in a chaotic WWII training camp — one an irresistible ladies' man, one a walking disaster. The first solo Martin & Lewis starring vehicle after their nightclub fame."},
+ {id:"5XxrGIJnPKQ", t:"Fear in the Night", y:1947, ind:"hollywood", dl:"https://archive.org/download/Fear_in_the_Night/Fear_in_the_Night.mp4", dlsz:"419 MB", g:["Thriller", "Horror"], dur:"1h 10m", rating:"6.5", src:"Cult Cinema Classics", dir:"Maxwell Shane", cast:"Paul Kelly, DeForest Kelley", lang:"English", desc:"A bank clerk dreams he murdered a man in a mirrored room — then wakes with the key to that room in his pocket. DeForest Kelley's screen debut, twenty years before Star Trek."},
+ {id:"xDepYDagsdE", t:"Port of New York", y:1949, ind:"hollywood", dl:"https://archive.org/download/Port_of_New_York/Port_of_New_York.mp4", dlsz:"481 MB", g:["Thriller", "Action"], dur:"1h 21m", rating:"6.1", src:"PizzaFlix", dir:"Laslo Benedek", cast:"Scott Brady, Yul Brynner", lang:"English", desc:"Federal agents infiltrate a narcotics ring operating through New York's docks, in semi-documentary style. Yul Brynner's film debut — with hair, and already magnetic as the villain."},
+ {id:"xqeIV94_uHM", t:"The Second Woman", y:1950, ind:"hollywood", dl:"https://archive.org/download/TheSecondWoman720p1950/TheSecondWoman720p.mp4", dlsz:"462 MB", g:["Thriller", "Drama"], dur:"1h 31m", rating:"6.4", src:"PizzaFlix", dir:"James V. Kern", cast:"Robert Young, Betsy Blair", lang:"English", desc:"An architect whose fiancée died on their wedding eve is plagued by 'accidents' — paintings slashed, his house burned — by someone who knows his guilt. A gaslighting melodrama in noir clothing."},
+ {id:"7jBc1MLs8hI", t:"The Big Trees", y:1952, ind:"hollywood", dl:"https://archive.org/download/TheBigTrees720p1952/TheBigTrees720p.mp4", dlsz:"601 MB", g:["Drama", "Action"], dur:"1h 30m", rating:"5.7", src:"FEATURE FILM", dir:"Felix E. Feist", cast:"Kirk Douglas, Eve Miller", lang:"English", desc:"A ruthless timber baron plans to seize a grove of giant sequoias held by a Quaker community — until its leader's daughter and the trees work on his conscience. Kirk Douglas in the redwoods."},
+ {id:"ylld-PszJZY", t:"Vengeance Valley", y:1951, ind:"hollywood", dl:"https://archive.org/download/vengeance-valley-1951/Vengeance%20Valley%20%281951%29.mp4", dlsz:"326 MB", g:["Action", "Drama"], dur:"1h 22m", rating:"6.0", src:"PizzaFlix", dir:"Richard Thorpe", cast:"Burt Lancaster, Joanne Dru", lang:"English", desc:"A foreman covers up his reckless foster-brother's crime and shame, until the cover-up costs more than the truth. Burt Lancaster in a brooding, adult western about loyalty curdling into guilt."},
+ {id:"3QH-e6NyPAg", t:"The Amazing Transparent Man", y:1960, ind:"hollywood", dl:"https://archive.org/download/The_Amazing_Transparent_Man/The_Amazing_Transparent_Man.mp4", dlsz:"341 MB", g:["Thriller", "Horror"], dur:"0h 58m", rating:"4.0", src:"Cult Cinema Classics", dir:"Edgar G. Ulmer", cast:"Douglas Kennedy, Marguerite Chapman", lang:"English", desc:"A safecracker is sprung from prison and turned invisible by a mad scientist building an invisible army — but invisibility is slowly killing him. Edgar G. Ulmer directs pulp on a shoestring."},
+ {id:"DEuXGylO22w", t:"Plan 9 from Outer Space", y:1957, ind:"hollywood", dl:"https://archive.org/download/plan-9-from-outer-space-1959-1080p-blu-ray-x-265-10bit-tigole/Plan%209%20from%20Outer%20Space%20%281959%29%20%281080p%20BluRay%20x265%2010bit%20Tigole%29.mp4", dlsz:"430 MB", g:["Horror"], dur:"1h 19m", rating:"4.0", src:"PizzaFlix", dir:"Edward D. Wood Jr.", cast:"Bela Lugosi, Vampira, Tor Johnson", lang:"English", desc:"Aliens resurrect the dead to stop humanity building a doomsday bomb. Ed Wood's masterpiece of cardboard tombstones and hubcap saucers — crowned 'worst film ever made', and loved precisely for it."},
+ {id:"XyT9YIUru4k", t:"The Dawn Rider", y:1935, ind:"hollywood", dl:"https://archive.org/download/DawnRider35/The_Dawn_Rider_1935.mp4", dlsz:"144 MB", g:["Action"], dur:"0h 52m", rating:"5.3", src:"Cult Cinema Classics", dir:"Robert N. Bradbury", cast:"John Wayne, Marion Burns", lang:"English", desc:"A cowboy returns home to find his father murdered and vows to find the killer — not knowing the man who saved his life is behind it. A brisk Wayne western from the Lone Star run."},
+ {id:"qZ0wPQIGobs", t:"Hollow Triumph (The Scar)", y:1948, ind:"hollywood", dl:"https://archive.org/download/hollow-triumph-steve-sekely-paul-henreid-1948-subs-cont./Hollow%20Triumph%20-%20Steve%20Sekely%20%26%20Paul%20Henreid%2C%201948%20%28subs%20cont.%29.mp4", dlsz:"454 MB", g:["Thriller"], dur:"1h 23m", rating:"6.8", src:"PizzaFlix", dir:"Steve Sekely", cast:"Paul Henreid, Joan Bennett", lang:"English", desc:"An ex-con on the run from a casino boss murders a psychiatrist who looks exactly like him and takes over his life — copying everything except one small detail. A noir of identity with a twist of pure ice."},
+ {id:"XO_a8hlEdfI", t:"First Spaceship on Venus", y:1960, ind:"hollywood", dl:"https://archive.org/download/the_first_spaceship_on_venus/First_Spaceship_on_Venus.mp4", dlsz:"2.01 GB", g:["Thriller"], dur:"1h 19m", rating:"4.4", src:"PizzaFlix", dir:"Kurt Maetzig", cast:"Yoko Tani, Oldrich Lukes", lang:"English", desc:"An international crew flies to Venus to learn why a mysterious spool of alien data was sent to Earth — and finds the ash of a dead civilisation. East Germany and Poland's lush answer to Hollywood space opera."},
+ {id:"pWlFlaPJtSo", t:"Beat the Devil", y:1953, ind:"hollywood", dl:"https://archive.org/download/beat-the-devil-1953-by-john-huston/Beat.The.Devil.1953.1080p.BluRay.x264-%5BYTS.AG%5D.mp4", dlsz:"1.34 GB", g:["Comedy", "Thriller"], dur:"1h 26m", rating:"6.5", src:"Cult Cinema Classics", dir:"John Huston", cast:"Humphrey Bogart, Jennifer Jones, Gina Lollobrigida", lang:"English", desc:"A gang of genteel crooks in an Italian port town all scheme to grab the same African uranium land, and every one of them is lying. John Huston and Truman Capote turned a thriller into a deadpan joke — a cult classic."},
+ {id:"O2m4RQ0lSnU", t:"The Thief of Bagdad", y:1924, ind:"hollywood", dl:"https://archive.org/download/vidtb/vidtb.mp4", dlsz:"795 MB", g:["Action", "Romance"], dur:"2h 28m", rating:"7.7", src:"Public Domain Movies", dir:"Raoul Walsh", cast:"Douglas Fairbanks, Julanne Johnston", lang:"Silent", desc:"A happy-go-lucky Baghdad thief falls for the Caliph's daughter and must out-quest three royal suitors — on flying carpets, against giant monsters. Douglas Fairbanks' most lavish spectacle, and silent cinema at its most joyful."},
+ {id:"0sUlbN67iFQ", t:"The General", y:1926, ind:"hollywood", dl:"https://archive.org/download/the-general-1926-remux-1080p-dts-hd-ma-51-x264/The%20General%20%281926%29%20-%20%5BREMUX-1080P%5D%5BDTS-HD%20MA%205.1%5D%5BX264%5D.mp4", dlsz:"458 MB", g:["Comedy", "Action"], dur:"1h 19m", rating:"8.1", src:"The Treasures of Cinema Classics", dir:"Buster Keaton & Clyde Bruckman", cast:"Buster Keaton, Marion Mack", lang:"Silent", trend:1, desc:"A Southern engineer, rejected by the army, single-handedly steals back his beloved locomotive from Union spies — then steals theirs. Voted again and again among the greatest films ever made; Keaton did every stunt himself."},
+ {id:"BjAn02ynpSg", t:"The Gold Rush", y:1925, ind:"hollywood", dl:"https://archive.org/download/the-gold-rush-film-1925/The-Gold-Rush-1925.mp4", dlsz:"436 MB", g:["Comedy", "Romance"], dur:"1h 27m", rating:"8.1", src:"Screen Prism", dir:"Charlie Chaplin", cast:"Charlie Chaplin, Georgia Hale, Mack Swain", lang:"Silent", trend:1, desc:"The Little Tramp prospects for gold in the Klondike, eats his own boot for Thanksgiving, and dances with two bread rolls. Chaplin said this was the film he most wanted to be remembered by — he was right."},
+ {id:"QJaXxY3citM", t:"The Lost World", y:1925, ind:"hollywood", dl:"https://archive.org/download/the-lost-world-1925/The%20Lost%20World%20%281925%29.ia.mp4", dlsz:"556 MB", g:["Action", "Drama"], dur:"1h 08m", rating:"7.0", src:"Timeless Classic Movies", dir:"Harry O. Hoyt", cast:"Bessie Love, Lewis Stone, Wallace Beery", lang:"Silent", desc:"Professor Challenger leads an expedition to a plateau where dinosaurs still live — and brings a brontosaurus back to London. Willis O'Brien's stop-motion creatures walked so King Kong could run, eight years later."},
+ {id:"enwB5zZfaV4", t:"Metropolis", y:1927, ind:"hollywood", dl:"https://archive.org/download/metropolis-1927-bdrip-1080p-x-265-dts-hd-ma-5.1-d-0ct-0r-lew-sev/Metropolis%201927%20BDrip%201080p%20x265%20DTS-HD%20MA%205.1%20D0ct0rLew%5BSEV%5D.mp4", dlsz:"842 MB", g:["Drama", "Thriller"], dur:"2h 29m", rating:"8.3", src:"YouTube", dir:"Fritz Lang", cast:"Brigitte Helm, Alfred Abel, Gustav Fröhlich", lang:"Silent", trend:1, desc:"In a shining city of towers, the master's son descends to the workers' underworld and falls for a saintly girl — whose double is built to destroy them all. Fritz Lang's silent colossus: the blueprint for every sci-fi city since."},
+ {id:"xZeMB8rbDAs", t:"The Phantom of the Opera", y:1925, ind:"hollywood", dl:"https://archive.org/download/the_phantom_of_the_opera_1925/The%20Phantom%20of%20the%20Opera%20%281925%29%20Hampton%20Cut%20BDRIP%20576p%20x264%20AC3%20KJNU.mp4", dlsz:"595 MB", g:["Horror", "Romance"], dur:"1h 29m", rating:"7.5", src:"Cult Cinema Classics", dir:"Rupert Julian", cast:"Lon Chaney, Mary Philbin", lang:"Silent", trend:1, desc:"A disfigured composer haunts the Paris Opera's cellars, tutoring the young singer he loves and dropping a chandelier on anyone in his way. Lon Chaney's self-designed skull-face reveal still shocks a century later."},
+ {id:"-NJttv1hWxE", t:"The Scarlet Pimpernel", y:1934, ind:"hollywood", dl:"https://archive.org/download/the.-scarlet.-pimpernel.-1934/The%20Scarlet%20Pimpernel%20%281934%29/The.Scarlet.Pimpernel.1934.ia.mp4", dlsz:"1.23 GB", g:["Action", "Romance"], dur:"1h 38m", rating:"7.4", src:"The Sprocket Vault", dir:"Harold Young", cast:"Leslie Howard, Merle Oberon", lang:"English", desc:"By day a foppish English aristocrat obsessed with fashion; by night the daring rescuer of French nobles from the guillotine. Leslie Howard defines the double-identity hero every superhero since has copied."},
+ {id:"rJW_C5YO7aU", t:"The Red House", y:1947, ind:"hollywood", dl:"https://archive.org/download/TheRedHouse/The_Red_House.mp4", dlsz:"598 MB", g:["Thriller", "Drama"], dur:"1h 40m", rating:"6.8", src:"Cult Cinema Classics", dir:"Delmer Daves", cast:"Edward G. Robinson, Judith Anderson", lang:"English", desc:"A farmer with a wooden leg forbids everyone from entering the woods beyond his farm, where an ice house hides the family's buried crime. Edward G. Robinson in a rural gothic of obsession and buried guilt."},
+ {id:"M3mYnke7YYA", t:"Safety Last!", y:1923, ind:"hollywood", dl:"https://archive.org/download/safety-last-final_202506/Safety%20Last%21%20Final.mp4", dlsz:"430 MB", g:["Comedy", "Action"], dur:"1h 14m", rating:"8.1", src:"Harold Lloyd", dir:"Fred C. Newmeyer & Sam Taylor", cast:"Harold Lloyd, Mildred Davis", lang:"Silent", trend:1, desc:"A small-town boy working in a big-city store stages a publicity stunt — climbing the building himself when his daredevil friend is chased off. The clock-hanging shot is the most famous image in silent comedy, and Lloyd did it with a prosthetic hand."},
+ {id:"ThlmJ1P0Zr0", t:"The Kid", y:1921, ind:"hollywood", g:["Comedy", "Drama"], dur:"0h 53m", rating:"8.2", src:"PhantomReel", dir:"Charlie Chaplin", cast:"Charlie Chaplin, Jackie Coogan", lang:"Silent", trend:1, desc:"The Tramp raises an abandoned baby he found in an alley; five years later the authorities come to take the boy away. Chaplin's first feature — 'a picture with a smile, and perhaps a tear'."},
+ {id:"Jcm9038iAdI", t:"Topper", y:1937, ind:"hollywood", dl:"https://archive.org/download/topper-1937_202505/Topper%20%281937%29.mp4", dlsz:"584 MB", g:["Comedy", "Romance"], dur:"1h 37m", rating:"7.2", src:"The Sprocket Vault", dir:"Norman Z. McLeod", cast:"Cary Grant, Constance Bennett, Roland Young", lang:"English", trend:1, desc:"A fun-loving rich couple die in a car crash and return as ghosts to loosen up their stuffy banker friend. Cary Grant, invisible-comedy effects, and the template for every ghost comedy since."},
+ {id:"OP2lW3QwsMA", t:"The Private Life of Henry VIII", y:1933, ind:"hollywood", dl:"https://archive.org/download/charles-laughton-the-private-life-of-henry-viii-1933-history-coorized-movie-subt/Charles%20Laughton%20%20The%20Private%20Life%20of%20Henry%20VIII%201933%20%20History%20%20Coorized%20Movie%20%20Subtitles%20-%20Cult%20Cinema%20Classics%20%281080p%2C%20h264%29.mp4", dlsz:"1.62 GB", g:["Drama", "Comedy"], dur:"1h 34m", rating:"7.0", src:"Cult Cinema Classics", dir:"Alexander Korda", cast:"Charles Laughton, Merle Oberon", lang:"English", desc:"Henry VIII eats, woos, weds and beheads his way through six wives, played by Charles Laughton as a booming, chicken-leg-throwing force of nature. The film that made British cinema exportable — and won Laughton an Oscar."},
+ {id:"2ENUzVbr_7s", t:"The Man Who Knew Too Much", y:1934, ind:"hollywood", dl:"https://archive.org/download/the-man-who-knew-too-much-1934_202206/The%20Man%20Who%20Knew%20Too%20Much%20%281934%29.mp4", dlsz:"421 MB", g:["Thriller"], dur:"1h 15m", rating:"6.7", src:"Cult Cinema Classics", dir:"Alfred Hitchcock", cast:"Peter Lorre, Edna Best, Leslie Banks", lang:"English", desc:"A holidaying couple overhears an assassination plot; their daughter is kidnapped to buy their silence. Hitchcock's first version of his favourite story — with Peter Lorre, in his English-language debut, smiling like a wolf."},
+ {id:"RmSdum4BMqI", t:"The 39 Steps", y:1935, ind:"hollywood", dl:"https://archive.org/download/the-39-steps_202306/The%2039%20Steps.mp4", dlsz:"478 MB", g:["Thriller"], dur:"1h 26m", rating:"7.6", src:"Cult Cinema Classics", dir:"Alfred Hitchcock", cast:"Robert Donat, Madeleine Carroll", lang:"English", trend:1, desc:"A Canadian visitor picks up a murdered spy's secret and is handcuffed — literally — to a sceptical blonde across Scotland. The template for every innocent-man-on-the-run thriller ever since, and still the fastest."},
+ {id:"9aJ5j8HH46w", t:"Sabotage", y:1936, ind:"hollywood", dl:"https://archive.org/download/Sabotage_1936/Sabotage.mp4", dlsz:"1.15 GB", g:["Thriller"], dur:"1h 17m", rating:"7.0", src:"Cult Cinema Classics", dir:"Alfred Hitchcock", cast:"Sylvia Sidney, Oskar Homolka", lang:"English", desc:"A London cinema owner is secretly a saboteur; his wife and a detective lodger circle the truth until a bomb goes off on a bus. Hitchcock's most controversial sequence is in this one — audiences argued about it for decades."},
+ {id:"eUkE_v8l4K4", t:"Young and Innocent", y:1937, ind:"hollywood", dl:"https://archive.org/download/hitchcock-young-and-innocent-1937-nova-pilbeam-derrick-de-marney-percy-marmont-360p/hitchcock___young_and_innocent_%281937%29_nova_pilbeam%2C_derrick_de_marney%2C_percy_marmont%20%28360p%29.mp4", dlsz:"409 MB", g:["Thriller", "Romance"], dur:"1h 23m", rating:"6.8", src:"Cult Cinema Classics", dir:"Alfred Hitchcock", cast:"Nova Pilbeam, Derrick De Marney", lang:"English", desc:"A young man found beside a murdered actress escapes custody; only a police chief's daughter believes him, and helps him find the real killer — a man with a twitch. Hitchcock's lightest manhunt, ending in one legendary crane shot."},
+ {id:"KRSrp7GPZq0", t:"The Flying Deuces", y:1939, ind:"hollywood", dl:"https://archive.org/download/TheFlyingDeuces720p1939/FlyingDeuces720p.mp4", dlsz:"249 MB", g:["Comedy"], dur:"1h 09m", rating:"6.8", src:"Cult Cinema Classics", dir:"A. Edward Sutherland", cast:"Stan Laurel, Oliver Hardy", lang:"English", desc:"Heartbroken Ollie is talked out of suicide and into the French Foreign Legion — where the boys desert, steal a plane, and fly it about as well as you'd expect. Laurel & Hardy's beloved Legion romp."}
+];
+
+var FEATURED = ["pu6tUW-S_-8","2XJJWUfxZnY","BGL6zt5fs0c","eFe-InXvszI","NKvt7D-crEE"];
+var state = { ind:"all", genre:"all", decade:"all", q:"", listOnly:false };
+var myList = new Set();
+var heroIdx = 0, heroTimer = null, current = null;
+
+function $(s){ return document.querySelector(s); }
+function byId(id){ for(var i=0;i<MOVIES.length;i++) if(MOVIES[i].id===id) return MOVIES[i]; return null; }
+function thumb(m){
+  return "https://i.ytimg.com/vi/" + m.id + "/maxresdefault.jpg";
+}
+function thumbHQ(id){
+  return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg";
+}
+function imgFallback(img, id){
+  if(!img.dataset.fb){
+    img.dataset.fb = "1";
+    img.src = thumbHQ(id);
+  } else {
+    img.onerror = null;
+    img.style.opacity = img.dataset.fade || "0.15";
+  }
+}
+function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+function cardHTML(m, wide){
+  var meta = [];
+  if(m.rating) meta.push("<b>★ " + esc(m.rating) + "</b>");
+  meta.push(esc(String(m.y)));
+  if(m.dur) meta.push(esc(m.dur));
+  meta.push(esc(m.g.join(" · ")));
+  return '<button type="button" class="card' + (wide ? " wide" : "") + '" data-open="' + m.id + '" aria-label="Play ' + esc(m.t) + ' (' + m.y + ')">' +
+    '<span class="thumb"><img loading="lazy" src="' + thumb(m) + '" alt="' + esc(m.t) + ' — watch full movie on YouTube" onerror="imgFallback(this,\'' + m.id + '\')">' +
+    '<span class="yr">' + m.y + '</span><span class="ind ' + (m.ind === "bollywood" ? "bw" : "hw") + '">' + (m.ind === "bollywood" ? "Bollywood" : "Hollywood") + '</span>' +
+    '<span class="playdot"><i>▶</i></span><span class="free">▶ PLAY HERE • HD • FREE</span>' + (m.dl ? '<span class="dlb">⬇ MP4</span>' : '') + '</span>' +
+    '<h3>' + esc(m.t) + '</h3><span class="sub">' + meta.join(" &nbsp;•&nbsp; ") + '<br>' + esc(m.cast.split(",").slice(0,2).join(", ")) + '</span></button>';
+}
+function fillRail(id, list, wide){
+  var el = document.getElementById(id); if(!el) return;
+  el.innerHTML = list.map(function(m){ return cardHTML(m, wide); }).join("");
+}
+function renderRows(){
+  fillRail("rail-trending", MOVIES.filter(function(m){return m.trend;}), true);
+  fillRail("rail-bollywood", MOVIES.filter(function(m){return m.ind==="bollywood";}), false);
+  fillRail("rail-hollywood", MOVIES.filter(function(m){return m.ind==="hollywood";}), false);
+  fillRail("rail-comedy", MOVIES.filter(function(m){return m.g.indexOf("Comedy")>-1;}), false);
+  fillRail("rail-dark", MOVIES.filter(function(m){return m.g.indexOf("Horror")>-1 || m.g.indexOf("Thriller")>-1;}), false);
+  var ml = MOVIES.filter(function(m){return myList.has(m.id);});
+  $("#row-mylist").hidden = ml.length === 0;
+  fillRail("rail-mylist", ml, false);
+}
+function filtered(){
+  return MOVIES.filter(function(m){
+    if(state.listOnly && !myList.has(m.id)) return false;
+    if(state.ind !== "all" && m.ind !== state.ind) return false;
+    if(state.genre !== "all" && m.g.indexOf(state.genre) === -1) return false;
+    if(state.decade !== "all" && Math.floor(m.y/10)*10 !== parseInt(state.decade,10)) return false;
+    if(state.q){
+      var hay = (m.t + " " + m.cast + " " + m.dir + " " + m.y + " " + m.g.join(" ")).toLowerCase();
+      if(hay.indexOf(state.q.toLowerCase()) === -1) return false;
+    }
+    return true;
+  });
+}
+function renderGrid(){
+  var list = filtered();
+  $("#grid").innerHTML = list.map(function(m){ return cardHTML(m, false); }).join("");
+  $("#emptyState").hidden = list.length !== 0;
+  $("#resultCount").textContent = list.length + (list.length === 1 ? " movie" : " movies");
+  var filtering = state.q || state.ind !== "all" || state.genre !== "all" || state.decade !== "all" || state.listOnly;
+  $("#rowsView").style.display = filtering ? "none" : "";
+  $("#browseTitle").textContent = state.listOnly ? "My List" : (filtering ? "Search & Filter Results" : "Browse All Movies");
+  $("#browseSub").textContent = filtering ? "Tap any poster to play the full movie" : "Every full movie in the library";
+}
+
+/* ---------- HERO ---------- */
+function setHero(idx){
+  heroIdx = (idx + FEATURED.length) % FEATURED.length;
+  var m = byId(FEATURED[heroIdx]); if(!m) return;
+  var img = $("#heroImg");
+  delete img.dataset.fb;
+  img.onerror = function(){ imgFallback(img, m.id); };
+  img.src = "https://i.ytimg.com/vi/" + m.id + "/maxresdefault.jpg";
+  img.alt = m.t + " (" + m.y + ")";
+  $("#heroKicker").textContent = (m.ind === "bollywood" ? "Bollywood" : "Hollywood") + " • Featured Classic";
+  $("#heroTitle").textContent = m.t;
+  var meta = "";
+  if(m.rating) meta += '<span class="match">★ ' + esc(m.rating) + ' IMDb</span>';
+  meta += "<span>" + m.y + "</span>";
+  if(m.dur) meta += "<span>" + esc(m.dur) + "</span>";
+  meta += '<span class="badge">' + esc(m.lang) + '</span><span>' + esc(m.g.join(" • ")) + '</span><span class="src">Free on YouTube — ' + esc(m.src) + '</span>';
+  $("#heroMeta").innerHTML = meta;
+  $("#heroDesc").textContent = m.desc;
+  $("#heroPlay").onclick = function(){ openMovie(m.id, true); };
+  $("#heroInfo").onclick = function(){ openMovie(m.id, false); };
+  $("#heroList").onclick = function(){ toggleList(m.id); };
+  $("#heroList").innerHTML = myList.has(m.id) ? "✓&nbsp; In My List" : "+&nbsp; My List";
+  var dots = $("#heroDots");
+  dots.innerHTML = FEATURED.map(function(f, i){ return '<button type="button" data-hero="' + i + '" class="' + (i === heroIdx ? "on" : "") + '" aria-label="Featured ' + (i+1) + '"></button>'; }).join("");
+}
+function startHeroTimer(){
+  if(heroTimer) clearInterval(heroTimer);
+  heroTimer = setInterval(function(){ if(!$("#overlay").classList.contains("open")) setHero(heroIdx + 1); }, 6500);
+}
+
+/* ---------- CINEMA PLAYER — plays HERE in HD via YouTube IFrame API ---------- */
+var ytPlayer = null, ytCreating = false, usingFallback = false;
+var desiredQuality = "hd1080", qualityTimer = null, apiWaitTimer = null;
+
+function qLabel(q){
+  if(q === "hd1080" || q === "hd720") return q === "hd1080" ? "1080p HD" : "720p HD";
+  if(q === "highres") return "HD (highest)";
+  if(q === "large") return "480p";
+  if(q === "medium") return "360p";
+  if(q === "small" || q === "tiny") return "240p";
+  return "Auto HD";
+}
+function showSpinner(on){
+  var s = $("#playerSpinner"); if(!s) return;
+  s.classList.toggle("hide", !on);
+  s.style.display = on ? "grid" : "none";
+}
+function updateQNow(prefix){
+  var el = $("#qNow"); if(!el) return;
+  var actual = "";
+  try { if(ytPlayer && ytPlayer.getPlaybackQuality) actual = ytPlayer.getPlaybackQuality(); } catch(e){}
+  if(actual && actual !== "unknown" && actual !== "default"){
+    el.textContent = "● Playing in " + qLabel(actual) + " — on this page";
+  } else if(prefix){
+    el.textContent = prefix;
+  } else {
+    el.textContent = "● Playing here — highest quality set (" + qLabel(desiredQuality) + " requested)";
+  }
+}
+function startQualityWatch(){
+  if(qualityTimer) clearInterval(qualityTimer);
+  qualityTimer = setInterval(function(){ updateQNow(); }, 2500);
+  setTimeout(function(){ updateQNow(); }, 900);
+}
+function applyQuality(){
+  if(ytPlayer && ytPlayer.setPlaybackQuality){
+    try { ytPlayer.setPlaybackQuality(desiredQuality); } catch(e){}
+  }
+  updateQNow("Setting " + qLabel(desiredQuality) + "…");
+}
+function showFallback(m){
+  showSpinner(false);
+  var f = $("#playerFallback"); if(f) f.hidden = false;
+  var a = $("#fallbackYt"); if(a && m) a.href = "https://www.youtube.com/watch?v=" + m.id;
+  updateQNow("In-page playback blocked for this title");
+}
+function hideFallback(){ var f = $("#playerFallback"); if(f) f.hidden = true; }
+function fallbackToIframe(m, autoplay){
+  usingFallback = true; ytCreating = false;
+  if(apiWaitTimer){ clearTimeout(apiWaitTimer); apiWaitTimer = null; }
+  if(ytPlayer){ try { ytPlayer.destroy(); } catch(e){} ytPlayer = null;
+    var old = document.getElementById("ytMount");
+    if(old){ var d = document.createElement("div"); d.id = "ytMount"; old.replaceWith(d); }
+  }
+  var mount = document.getElementById("ytMount"); if(!mount || !m) return;
+  var src = "https://www.youtube-nocookie.com/embed/" + m.id + "?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&vq=" + desiredQuality + (autoplay ? "&autoplay=1" : "");
+  mount.innerHTML = '<iframe src="' + src + '" title="' + esc(m.t) + ' — full movie playing here in HD" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" onload="showSpinner(false);updateQNow();"></iframe>';
+  startQualityWatch();
+}
+function createYTPlayer(m, autoplay){
+  ytCreating = true; usingFallback = false;
+  try {
+    ytPlayer = new YT.Player("ytMount", {
+      width: "100%", height: "100%", videoId: m.id,
+      host: "https://www.youtube-nocookie.com",
+      playerVars: { autoplay: autoplay ? 1 : 0, rel: 0, modestbranding: 1, playsinline: 1, iv_load_policy: 3, vq: desiredQuality },
+      events: {
+        onReady: function(e){
+          ytCreating = false;
+          try { e.target.setPlaybackQuality(desiredQuality); } catch(err){}
+          if(autoplay){ try { e.target.playVideo(); } catch(err){} }
+          startQualityWatch();
+        },
+        onStateChange: function(e){
+          if(e.data === YT.PlayerState.PLAYING){ showSpinner(false); applyQuality(); updateQNow(); }
+          else if(e.data === YT.PlayerState.BUFFERING){ showSpinner(true); }
+          else { showSpinner(false); }
+        },
+        onPlaybackQualityChange: function(){ updateQNow(); },
+        onError: function(e){
+          /* 101 / 150 = embedding disabled by owner; 100 = not found/private */
+          showFallback(current);
+        }
+      }
+    });
+  } catch(err){ fallbackToIframe(m, autoplay); }
+}
+function playInCinema(m, autoplay){
+  hideFallback(); showSpinner(true); updateQNow("Loading in HD…");
+  if(usingFallback){ fallbackToIframe(m, autoplay); return; }
+  if(ytPlayer && ytPlayer.loadVideoById){
+    try {
+      if(autoplay) ytPlayer.loadVideoById({ videoId: m.id, startSeconds: 0, suggestedQuality: desiredQuality });
+      else ytPlayer.cueVideoById({ videoId: m.id, startSeconds: 0, suggestedQuality: desiredQuality });
+      startQualityWatch(); return;
+    } catch(e){ /* recreate below */ }
+  }
+  if(ytCreating) { setTimeout(function(){ playInCinema(m, autoplay); }, 600); return; }
+  if(window.YT && YT.Player){ createYTPlayer(m, autoplay); return; }
+  /* Load the IFrame API (classic script) once */
+  var prevReady = window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady = function(){ if(prevReady) prevReady(); if(current) createYTPlayer(current, autoplay); };
+  if(!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')){
+    var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+  }
+  if(apiWaitTimer) clearTimeout(apiWaitTimer);
+  apiWaitTimer = setTimeout(function(){
+    if(!ytPlayer && current){ fallbackToIframe(current, autoplay); }
+  }, 5000);
+}
+
+function openMovie(id, autoplay){
+  var m = byId(id); if(!m) return;
+  current = m;
+  $("#cinemaNow").textContent = m.t + " (" + m.y + ")";
+  playInCinema(m, autoplay);
+  $("#mTitle").textContent = m.t;
+  var meta = "";
+  if(m.rating) meta += '<span class="match">★ ' + esc(m.rating) + ' IMDb</span>';
+  meta += "<span>" + m.y + "</span>";
+  if(m.dur) meta += "<span>" + esc(m.dur) + "</span>";
+  meta += '<span class="badge">' + (m.ind === "bollywood" ? "BOLLYWOOD" : "HOLLYWOOD") + '</span><span>' + esc(m.g.join(" • ")) + '</span>';
+  $("#mMeta").innerHTML = meta;
+  $("#mDesc").textContent = m.desc;
+  $("#mKv").innerHTML =
+    '<div><span>Director</span>' + esc(m.dir) + '</div>' +
+    '<div><span>Starring</span>' + esc(m.cast) + '</div>' +
+    '<div><span>Language</span>' + esc(m.lang) + '</div>' +
+    '<div><span>Playing here</span>On this page in HD — stream via ' + esc(m.src) + '</div>' +
+    (m.dl ? '<div><span>Download</span>Free MP4 (' + esc(m.dlsz) + ') — public domain, via Internet Archive</div>' : '<div><span>Download</span>Streaming only — official channel release</div>');
+  var dlb = $("#mDownload"), dln = $("#mDlNote");
+  if(m.dl){
+    dlb.style.display = ""; dlb.href = m.dl;
+    dlb.innerHTML = "⬇&nbsp; Download MP4 • " + esc(m.dlsz);
+    dln.innerHTML = "<b>Free download:</b> this is a public-domain classic, so the full movie file (MP4, " + esc(m.dlsz) + ") is free to keep from the Internet Archive. The file opens in a new tab — if it starts playing there instead of saving, use the player's ⋮ menu or right-click → Save to download it, then watch offline anytime.";
+  } else {
+    dlb.style.display = "none"; dlb.href = "#";
+    dln.textContent = "Download isn't offered for this title — it's an official rights-holder release, so it streams here in HD only.";
+  }
+  $("#mYt").href = "https://www.youtube.com/watch?v=" + m.id;
+  var fb = $("#fallbackYt"); if(fb) fb.href = "https://www.youtube.com/watch?v=" + m.id;
+  var lb = $("#mList");
+  lb.innerHTML = myList.has(m.id) ? "✓&nbsp; In My List — tap to remove" : "+&nbsp; My List";
+  lb.onclick = function(){ toggleList(m.id); lb.innerHTML = myList.has(m.id) ? "✓&nbsp; In My List — tap to remove" : "+&nbsp; My List"; };
+  $("#overlay").classList.add("open");
+  $("#overlay").scrollTop = 0;
+  document.body.style.overflow = "hidden";
+}
+function closeMovie(){
+  $("#overlay").classList.remove("open");
+  if(qualityTimer){ clearInterval(qualityTimer); qualityTimer = null; }
+  if(apiWaitTimer){ clearTimeout(apiWaitTimer); apiWaitTimer = null; }
+  try { if(ytPlayer && ytPlayer.stopVideo) ytPlayer.stopVideo(); } catch(e){}
+  if(usingFallback){
+    var mount = document.getElementById("ytMount");
+    if(mount && mount.tagName !== "IFRAME") mount.innerHTML = "";
+    else if(mount){ var d = document.createElement("div"); d.id = "ytMount"; mount.replaceWith(d); ytPlayer = null; usingFallback = false; }
+  }
+  hideFallback(); showSpinner(false);
+  if(document.fullscreenElement){ try { document.exitFullscreen(); } catch(e){} }
+  document.body.style.overflow = "";
+  current = null;
+}
+function toast(msg){
+  var t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  setTimeout(function(){ t.classList.remove("show"); }, 2200);
+}
+function toggleList(id){
+  var m = byId(id);
+  if(myList.has(id)){ myList.delete(id); toast("Removed “" + m.t + "” from My List"); }
+  else { myList.add(id); toast("Added “" + m.t + "” to My List"); }
+  $("#myListCount").textContent = myList.size;
+  renderRows(); renderGrid();
+  if(current && current.id === id) $("#heroList").innerHTML = myList.has(id) ? "✓&nbsp; In My List" : "+&nbsp; My List";
+}
+
+/* ---------- EVENTS ---------- */
+document.addEventListener("click", function(e){
+  var open = e.target.closest("[data-open]");
+  if(open){ openMovie(open.getAttribute("data-open"), true); return; }
+  var sc = e.target.closest("[data-scroll]");
+  if(sc){
+    var rail = document.getElementById(sc.getAttribute("data-scroll"));
+    if(rail) rail.scrollBy({ left: parseInt(sc.getAttribute("data-dir"),10) * Math.min(rail.clientWidth * 0.85, 640), behavior: "smooth" });
+    return;
+  }
+  var hd = e.target.closest("[data-hero]");
+  if(hd){ setHero(parseInt(hd.getAttribute("data-hero"),10)); startHeroTimer(); }
+});
+document.querySelectorAll(".tabs button").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.querySelectorAll(".tabs button").forEach(function(x){ x.classList.remove("on"); });
+    b.classList.add("on"); state.ind = b.getAttribute("data-ind"); state.listOnly = false; renderGrid();
+  });
+});
+document.querySelectorAll(".chip").forEach(function(c){
+  c.addEventListener("click", function(){
+    document.querySelectorAll(".chip").forEach(function(x){ x.classList.remove("on"); });
+    c.classList.add("on"); state.genre = c.getAttribute("data-genre"); renderGrid();
+  });
+});
+$("#decadeSel").addEventListener("change", function(){ state.decade = this.value; renderGrid(); });
+$("#searchInput").addEventListener("input", function(){ state.q = this.value.trim(); renderGrid(); });
+$("#myListBtn").addEventListener("click", function(){
+  state.listOnly = !state.listOnly;
+  if(state.listOnly && myList.size === 0){ toast("My List is empty — tap + My List on any movie"); state.listOnly = false; return; }
+  renderGrid();
+  document.getElementById("browse").scrollIntoView({ behavior: "smooth" });
+});
+$("#closeModal").addEventListener("click", closeMovie);
+document.querySelectorAll(".qpill").forEach(function(p){
+  p.addEventListener("click", function(){
+    document.querySelectorAll(".qpill").forEach(function(x){ x.classList.remove("on"); });
+    p.classList.add("on");
+    desiredQuality = p.getAttribute("data-q");
+    if(usingFallback && current){ fallbackToIframe(current, true); toast("Quality set to " + qLabel(desiredQuality) + " — reloading here"); }
+    else { applyQuality(); toast("Quality set to " + qLabel(desiredQuality)); }
+  });
+});
+$("#fsBtn").addEventListener("click", function(){
+  var w = document.getElementById("playerWrap");
+  try {
+    if(document.fullscreenElement){ document.exitFullscreen(); }
+    else if(w.requestFullscreen){ w.requestFullscreen(); }
+    else if(w.webkitRequestFullscreen){ w.webkitRequestFullscreen(); }
+  } catch(e){ toast("Full screen is not available in this browser view — use the player's ⛶ icon"); }
+});
+$("#mReplay").addEventListener("click", function(){
+  if(!current) return;
+  document.getElementById("overlay").scrollTo({ top: 0, behavior: "smooth" });
+  if(ytPlayer && ytPlayer.seekTo){ try { ytPlayer.seekTo(0, true); ytPlayer.playVideo(); applyQuality(); return; } catch(e){} }
+  playInCinema(current, true);
+});
+$("#overlay").addEventListener("click", function(e){ if(e.target === this) closeMovie(); });
+document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeMovie(); });
+window.addEventListener("scroll", function(){ $("#topnav").classList.toggle("scrolled", window.scrollY > 40); }, { passive: true });
+
+/* ---------- LANDING / EMAIL GATE ---------- */
+var registeredEmail = "";
+var gateMode = "register"; /* or "signin" */
+
+function buildLanding(){
+  /* Poster collage from the library's own posters */
+  var collage = $("#landCollage");
+  if(collage){
+    var tiles = "";
+    for(var i = 0; i < 25; i++){
+      var m = MOVIES[i % MOVIES.length];
+      tiles += '<img src="' + thumb(m) + '" alt="" loading="lazy" data-fade="0" onerror="imgFallback(this,\'' + m.id + '\')">';
+    }
+    collage.innerHTML = tiles;
+  }
+  /* Trending Now — big-number top picks, like the reference */
+  var trend = $("#landTrend");
+  if(trend){
+    var picks = MOVIES.filter(function(m){ return m.trend; }).slice(0, 6);
+    trend.innerHTML = picks.map(function(m, i){
+      return '<button type="button" class="tcard" data-trend="' + m.id + '" aria-label="' + esc(m.t) + ' — register free to watch">' +
+        '<span class="num">' + (i + 1) + '</span>' +
+        '<span class="tpost"><img loading="lazy" src="' + thumb(m) + '" alt="' + esc(m.t) + ' (' + m.y + ')" onerror="imgFallback(this,\'' + m.id + '\')"></span>' +
+        '<span class="tt">' + esc(m.t) + ' (' + m.y + ')</span></button>';
+    }).join("");
+  }
+}
+function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(v || "").trim()); }
+function gateError(form, msg){
+  var box = form.parentElement.querySelector(".gate-err");
+  var input = form.querySelector(".gate-email");
+  if(box){ box.textContent = msg; box.hidden = !msg; }
+  if(input) input.classList.toggle("bad", !!msg);
+}
+function enterSite(email){
+  registeredEmail = email;
+  $("#acctMail").textContent = email;
+  $("#acctAv").textContent = email.charAt(0).toUpperCase();
+  $("#acct").hidden = false;
+  var l = $("#landing");
+  l.classList.add("gone");
+  document.body.classList.remove("locked");
+  setTimeout(function(){ l.hidden = true; }, 500);
+  window.scrollTo(0, 0);
+  toast(gateMode === "signin" ? "Welcome back! Pick any movie — it plays here in HD." : "You're in! Membership is free — pick any movie, it plays here in HD.");
+}
+function leaveSite(){
+  registeredEmail = "";
+  $("#acct").hidden = true;
+  closeMovie();
+  var l = $("#landing");
+  l.hidden = false;
+  /* force reflow so the fade-in transition runs */
+  void l.offsetWidth;
+  l.classList.remove("gone");
+  l.scrollTop = 0;
+  document.body.classList.add("locked");
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll(".gate-form").forEach(function(form){
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var input = form.querySelector(".gate-email");
+    var v = input ? input.value.trim() : "";
+    if(!v){ gateError(form, "Please enter your email address to continue."); if(input) input.focus(); return; }
+    if(!validEmail(v)){ gateError(form, "That email doesn't look right — check it and try again, e.g. name@example.com"); if(input) input.focus(); return; }
+    gateError(form, "");
+    enterSite(v);
+  });
+  var inp = form.querySelector(".gate-email");
+  if(inp) inp.addEventListener("input", function(){ gateError(form, ""); });
+});
+$("#signInToggle").addEventListener("click", function(){
+  gateMode = gateMode === "register" ? "signin" : "register";
+  this.textContent = gateMode === "register" ? "Sign In" : "Register";
+  $("#landReady").textContent = gateMode === "register"
+    ? "Ready to watch? Enter your email to register and open the full movie library."
+    : "Welcome back — enter your email to continue watching, free.";
+  document.querySelectorAll(".gate-btn").forEach(function(b){
+    b.innerHTML = (gateMode === "register" ? "Get Started" : "Sign In") + ' <span aria-hidden="true">›</span>';
+  });
+  var first = document.querySelector(".gate-email");
+  if(first){ first.focus(); }
+  $("#landing").scrollTo({ top: 0, behavior: "smooth" });
+});
+$("#signOutBtn").addEventListener("click", leaveSite);
+document.addEventListener("click", function(e){
+  var t = e.target.closest("[data-trend]");
+  if(!t) return;
+  if(registeredEmail){ openMovie(t.getAttribute("data-trend"), true); return; }
+  $("#landing").scrollTo({ top: 0, behavior: "smooth" });
+  var first = document.querySelector(".gate-email");
+  if(first) first.focus();
+  toast("Enter your email above — it's free — and this movie is yours to watch.");
+});
+
+/* ---------- INIT ---------- */
+buildLanding();
+$("#statMovies").textContent = MOVIES.length;
+renderRows();
+renderGrid();
+setHero(0);
+startHeroTimer();
+</script>
+</body>
+</html>
